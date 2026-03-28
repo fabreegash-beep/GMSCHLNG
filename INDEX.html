@@ -264,7 +264,7 @@
 
     <div class="games-grid">
         <!-- الخانة 1: لعبة إيجاد الرقم -->
-        <div class="game-card" data-game="find-number" data-url="lovely-nasturtium-c1dfa1.netlify.app/">
+        <div class="game-card" data-game="find-number" data-url="numrgames.netlify.app/">
             <div class="card-icon">
                 🎲
             </div>
@@ -278,7 +278,7 @@
         </div>
 
         <!-- الخانة 2: اسأل تربح -->
-        <div class="game-card" data-game="ask-win" data-url="https://tranquil-jelly-aeeeb2.netlify.app/">
+        <div class="game-card" data-game="ask-win" data-url="https://qstgames.netlify.app/">
             <div class="card-icon">
                 ❓
             </div>
@@ -292,7 +292,7 @@
         </div>
 
         <!-- الخانة 3: تخمين الالوان -->
-        <div class="game-card" data-game="color-guess" data-url="https://earnest-brioche-4dd116.netlify.app/">
+        <div class="game-card" data-game="color-guess" data-url="https://clrgaames.netlify.app/">
             <div class="card-icon">
                 🎨
             </div>
@@ -317,24 +317,24 @@
         const cards = document.querySelectorAll('.game-card');
         
         // الروابط المطلوبة حسب الترتيب:
-        // الخانة 1: لعبة ايجاد الرقم -> lovely-nasturtium-c1dfa1.netlify.app/
-        // الخانة 2: اسأل تربح -> tranquil-jelly-aeeeb2.netlify.app
-        // الخانة 3: تخمين الالوان -> https://earnest-brioche-4dd116.netlify.app/
+        // الخانة 1: لعبة ايجاد الرقم -> numrgames.netlify.app/
+        // الخانة 2: اسأل تربح -> qstgames.netlify.app
+        // الخانة 3: تخمين الالوان -> https://clrgaames.netlify.app/
         
         // التأكد من ضبط الروابط بشكل صحيح (حماية إضافية)
         const findNumberCard = document.querySelector('.game-card[data-game="find-number"]');
         if (findNumberCard) {
-            findNumberCard.setAttribute('data-url', 'https://lovely-nasturtium-c1dfa1.netlify.app/');
+            findNumberCard.setAttribute('data-url', 'https://numrgames.netlify.app/');
         }
         
         const askWinCard = document.querySelector('.game-card[data-game="ask-win"]');
         if (askWinCard) {
-            askWinCard.setAttribute('data-url', 'https://tranquil-jelly-aeeeb2.netlify.app/');
+            askWinCard.setAttribute('data-url', 'https://qstgames.netlify.app/');
         }
         
         const colorGuessCard = document.querySelector('.game-card[data-game="color-guess"]');
         if (colorGuessCard) {
-            colorGuessCard.setAttribute('data-url', 'https://earnest-brioche-4dd116.netlify.app/');
+            colorGuessCard.setAttribute('data-url', 'https://clrgaames.netlify.app/');
         }
         
         // دالة الانتقال للرابط
