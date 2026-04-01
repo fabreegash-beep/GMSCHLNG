@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>بوابة الألعاب | تحديات ذهنية</title>
+    <title>بوابة الألعاب | تحديات ذهنية + روبلة الأسئلة</title>
     <style>
         * {
             margin: 0;
@@ -38,7 +38,7 @@
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             width: 100%;
             position: relative;
             z-index: 2;
@@ -81,7 +81,7 @@
         .game-card {
             flex: 1;
             min-width: 280px;
-            max-width: 360px;
+            max-width: 320px;
             background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(16px);
             border-radius: 2rem;
@@ -219,6 +219,7 @@
         .game-card:nth-child(1) { animation-delay: 0.1s; }
         .game-card:nth-child(2) { animation-delay: 0.2s; }
         .game-card:nth-child(3) { animation-delay: 0.3s; }
+        .game-card:nth-child(4) { animation-delay: 0.4s; } /* للعبة الروبلة */
 
         /* تحسين للأجهزة المحمولة */
         @media (max-width: 780px) {
@@ -252,14 +253,17 @@
         .game-card[data-game="color-guess"]:hover {
             border-color: #f97316;
         }
+        .game-card[data-game="roubleh"]:hover {
+            border-color: #ec489a;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="hero">
-        <h1>🎮 ألعاب التحدي 🧩</h1>
-        <p>اختر لعبتك المفضلة وابدأ المغامرة الذهنية</p>
+        <h1>🎮 ألعاب التحدي 🧩 + روبلة الأسئلة 🃏</h1>
+        <p>اختر لعبتك المفضلة وابدأ المغامرة الذهنية | اختبر معلوماتك في روبلة الأسئلة</p>
     </div>
 
     <div class="games-grid">
@@ -304,10 +308,24 @@
                 <span>▶</span> اضغط للعب
             </div>
         </div>
+
+        <!-- الخانة الجديدة 4: لعبة الروبلة (رابط خارجي) -->
+        <div class="game-card" data-game="roubleh" data-url="https://robla.vercel.app/">
+            <div class="card-icon">
+                🃏✨
+            </div>
+            <div class="game-title">روبلة الأسئلة</div>
+            <div class="game-desc">
+                لعبة تحدي الأسئلة الممتعة | أجب بسرعة واجمع النقاط | تحدى أصدقائك الآن
+            </div>
+            <div class="play-btn">
+                <span>🎴</span> اضغط للعب
+            </div>
+        </div>
     </div>
     
     <div class="footer">
-        ⚡ اضغط على أي خانة للانتقال مباشرة إلى اللعبة | استمتع بالتحدي
+        ⚡ اضغط على أي خانة للانتقال مباشرة إلى اللعبة | استمتع بتحدي روبلة الأسئلة
     </div>
 </div>
 
@@ -315,11 +333,6 @@
     (function() {
         // الحصول على جميع البطاقات
         const cards = document.querySelectorAll('.game-card');
-        
-        // الروابط المطلوبة حسب الترتيب:
-        // الخانة 1: لعبة ايجاد الرقم -> https://numgams.vercel.app
-        // الخانة 2: اسأل تربح -> burotime-jw7c.vercel.app
-        // الخانة 3: تخمين الالوان -> https://coulourgamss.vercel.app/
         
         // التأكد من ضبط الروابط بشكل صحيح (حماية إضافية)
         const findNumberCard = document.querySelector('.game-card[data-game="find-number"]');
@@ -335,6 +348,14 @@
         const colorGuessCard = document.querySelector('.game-card[data-game="color-guess"]');
         if (colorGuessCard) {
             colorGuessCard.setAttribute('data-url', 'https://coulourgamss.vercel.app/');
+        }
+        
+        // لعبة الروبلة - الرابط الجديد https://robla.vercel.app/
+        const roublehCard = document.querySelector('.game-card[data-game="roubleh"]');
+        if (roublehCard) {
+            roublehCard.setAttribute('data-url', 'https://robla.vercel.app/');
+            // تأكيد أن البطاقة تتصرف كرابط خارجي عادي
+            roublehCard.style.cursor = 'pointer';
         }
         
         // دالة الانتقال للرابط
@@ -389,10 +410,11 @@
         });
         
         // تسجيل في الكونسول للتأكد من الروابط النهائية (للمطور)
-        console.log('✅ تم تحميل واجهة الألعاب بنجاح');
+        console.log('✅ تم تحميل واجهة الألعاب بنجاح مع تحديث رابط الروبلة');
         console.log('📌 الرابط 1 (لعبة ايجاد الرقم):', document.querySelector('[data-game="find-number"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 2 (اسأل تربح):', document.querySelector('[data-game="ask-win"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 3 (تخمين الالوان):', document.querySelector('[data-game="color-guess"]')?.getAttribute('data-url'));
+        console.log('📌 الرابط 4 (روبلة الأسئلة):', document.querySelector('[data-game="roubleh"]')?.getAttribute('data-url'));
     })();
 </script>
 </body>
