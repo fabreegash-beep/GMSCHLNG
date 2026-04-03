@@ -219,7 +219,8 @@
         .game-card:nth-child(1) { animation-delay: 0.1s; }
         .game-card:nth-child(2) { animation-delay: 0.2s; }
         .game-card:nth-child(3) { animation-delay: 0.3s; }
-        .game-card:nth-child(4) { animation-delay: 0.4s; } /* للعبة الروبلة */
+        .game-card:nth-child(4) { animation-delay: 0.4s; }
+        .game-card:nth-child(5) { animation-delay: 0.5s; } /* البطاقة الجديدة */
 
         /* تحسين للأجهزة المحمولة */
         @media (max-width: 780px) {
@@ -255,6 +256,9 @@
         }
         .game-card[data-game="roubleh"]:hover {
             border-color: #ec489a;
+        }
+        .game-card[data-game="squares"]:hover {
+            border-color: #14b8a6;
         }
     </style>
 </head>
@@ -309,7 +313,7 @@
             </div>
         </div>
 
-        <!-- الخانة الجديدة 4: لعبة الروبلة (رابط خارجي) -->
+        <!-- الخانة 4: لعبة الروبلة -->
         <div class="game-card" data-game="roubleh" data-url="https://robla.vercel.app/">
             <div class="card-icon">
                 🃏✨
@@ -322,10 +326,24 @@
                 <span>🎴</span> اضغط للعب
             </div>
         </div>
+
+        <!-- الخانة 5 (الجديدة): لعبة المربعات -->
+        <div class="game-card" data-game="squares" data-url="https://morabaa.vercel.app/">
+            <div class="card-icon">
+                🔲🧩
+            </div>
+            <div class="game-title">لعبة المربعات</div>
+            <div class="game-desc">
+                لعبة التحدي الكلاسيكية | ارسم الخطوط واكمل المربعات وتفوق على خصمك
+            </div>
+            <div class="play-btn">
+                <span>🎯</span> اضغط للعب
+            </div>
+        </div>
     </div>
     
     <div class="footer">
-        ⚡ اضغط على أي خانة للانتقال مباشرة إلى اللعبة | استمتع بتحدي روبلة الأسئلة
+        ⚡ اضغط على أي خانة للانتقال مباشرة إلى اللعبة | استمتع بتحدي روبلة الأسئلة ولعبة المربعات
     </div>
 </div>
 
@@ -334,29 +352,23 @@
         // الحصول على جميع البطاقات
         const cards = document.querySelectorAll('.game-card');
         
-        // التأكد من ضبط الروابط بشكل صحيح (حماية إضافية)
-        const findNumberCard = document.querySelector('.game-card[data-game="find-number"]');
-        if (findNumberCard) {
-            findNumberCard.setAttribute('data-url', 'https://numgams.vercel.app/');
+        // تعريف دالة لتحديث وإصلاح الروابط
+        function setGameUrl(selector, url) {
+            const card = document.querySelector(selector);
+            if (card) {
+                card.setAttribute('data-url', url);
+                console.log(`✅ تم تعيين رابط ${selector} : ${url}`);
+            } else {
+                console.warn(`⚠️ لم يتم العثور على البطاقة: ${selector}`);
+            }
         }
         
-        const askWinCard = document.querySelector('.game-card[data-game="ask-win"]');
-        if (askWinCard) {
-            askWinCard.setAttribute('data-url', 'burotime-jw7c.vercel.app/');
-        }
-        
-        const colorGuessCard = document.querySelector('.game-card[data-game="color-guess"]');
-        if (colorGuessCard) {
-            colorGuessCard.setAttribute('data-url', 'https://coulourgamss.vercel.app/');
-        }
-        
-        // لعبة الروبلة - الرابط الجديد https://robla.vercel.app/
-        const roublehCard = document.querySelector('.game-card[data-game="roubleh"]');
-        if (roublehCard) {
-            roublehCard.setAttribute('data-url', 'https://robla.vercel.app/');
-            // تأكيد أن البطاقة تتصرف كرابط خارجي عادي
-            roublehCard.style.cursor = 'pointer';
-        }
+        // ضبط الروابط بشكل آمن
+        setGameUrl('.game-card[data-game="find-number"]', 'https://numgams.vercel.app/');
+        setGameUrl('.game-card[data-game="ask-win"]', 'https://burotime-jw7c.vercel.app/');
+        setGameUrl('.game-card[data-game="color-guess"]', 'https://coulourgamss.vercel.app/');
+        setGameUrl('.game-card[data-game="roubleh"]', 'https://robla.vercel.app/');
+        setGameUrl('.game-card[data-game="squares"]', 'https://morabaa.vercel.app/');
         
         // دالة الانتقال للرابط
         function redirectToGame(url, gameName) {
@@ -409,12 +421,13 @@
             });
         });
         
-        // تسجيل في الكونسول للتأكد من الروابط النهائية (للمطور)
-        console.log('✅ تم تحميل واجهة الألعاب بنجاح مع تحديث رابط الروبلة');
+        // تسجيل في الكونسول للتأكد من الروابط النهائية
+        console.log('✅ تم تحميل واجهة الألعاب بنجاح مع جميع الروابط المحدثة');
         console.log('📌 الرابط 1 (لعبة ايجاد الرقم):', document.querySelector('[data-game="find-number"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 2 (اسأل تربح):', document.querySelector('[data-game="ask-win"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 3 (تخمين الالوان):', document.querySelector('[data-game="color-guess"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 4 (روبلة الأسئلة):', document.querySelector('[data-game="roubleh"]')?.getAttribute('data-url'));
+        console.log('📌 الرابط 5 (لعبة المربعات):', document.querySelector('[data-game="squares"]')?.getAttribute('data-url'));
     })();
 </script>
 </body>
