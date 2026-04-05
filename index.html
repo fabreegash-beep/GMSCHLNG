@@ -31,47 +31,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.2), rgba(0,0,0,0)),
-                              radial-gradient(1px 1px at 80px 200px, rgba(255,255,255,0.15), rgba(0,0,0,0));
-            background-size: 200px 200px, 150px 150px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .container {
-            max-width: 1400px;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* العنوان الرئيسي */
-        .hero {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.2rem, 7vw, 3.8rem);
-            font-weight: 800;
-            background: linear-gradient(125deg, #f0f9ff, #c084fc, #60a5fa);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            letter-spacing: -0.02em;
-        }
-
-        .hero p {
-            color: #a5b4fc;
-            margin-top: 0.8rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* شبكة البطاقات */
-        .games-grid {
-            display: flex;
+            background-i
             flex-wrap: wrap;
             justify-content: center;
             gap: 2rem;
@@ -108,7 +68,7 @@
             opacity: 0;
             transition: opacity 0.5s;
             pointer-events: none;
-        }
+    
 
         .game-card:hover::after {
             opacity: 1;
@@ -145,44 +105,14 @@
             border-color: #3b82f6;
         }
         .game-card[data-game="ask-win"]:hover {
-            border-color: #10b981;
-        }
-        .game-card[data-game="color-guess"]:hover {
-            border-color: #f97316;
-        }
-        .game-card[data-game="roubleh"]:hover {
+            border-r {
             border-color: #ec489a;
         }
-        .game-card[data-game="squares"]:hover {
-            border-color: #14b8a6;
-        }
-    </style>
-</head>
-<body>
-
+        .game-card[data-game="sq
 <div class="container">
     <div class="hero">
         <h1>🎮 ألعاب التحدي 🧩 + روبلة الأسئلة 🃏</h1>
-        <p>اختر لعبتك المفضلة وابدأ المغامرة الذهنية | اختبر معلوماتك في روبلة الأسئلة</p>
-    </div>
-
-    <div class="games-grid">
-        <!-- الخانة 1: لعبة إيجاد الرقم -->
-        <div class="game-card" data-game="find-number" data-url="https://numgams.vercel.app/">
-            <div class="card-icon">
-                🎲
-            </div>
-            <div class="game-title">لعبة إيجاد الرقم</div>
-            <div class="game-desc">
-                خمّن الرقم السري واستخدم ذكاءك للفوز بأسرع وقت
-            </div>
-            <div class="play-btn">
-                <span>▶</span> اضغط للعب
-            </div>
-        </div>
-
-        <!-- الخانة 2: اسأل تربح -->
-        <div class="game-card" data-game="ask-win" data-url="burotime-jw7c.vercel.app/">
+        <p>اختر لعبتك المفضلة وابدأ المغامرة الذهنية | اختبر معلوماتك في روبلة الأسta-url="burotime-jw7c.vercel.app/">
             <div class="card-icon">
                 ❓
             </div>
@@ -248,55 +178,7 @@
         // الحصول على جميع البطاقات
         const cards = document.querySelectorAll('.game-card');
         
-        // تعريف دالة لتحديث وإصلاح الروابط
-        function setGameUrl(selector, url) {
-            const card = document.querySelector(selector);
-            if (card) {
-                card.setAttribute('data-url', url);
-                console.log(`✅ تم تعيين رابط ${selector} : ${url}`);
-            } else {
-                console.warn(`⚠️ لم يتم العثور على البطاقة: ${selector}`);
-            }
-        }
-        
-        // ضبط الروابط بشكل آمن
-        setGameUrl('.game-card[data-game="find-number"]', 'https://numgams.vercel.app/');
-        setGameUrl('.game-card[data-game="ask-win"]', 'https://burotime-jw7c.vercel.app/');
-        setGameUrl('.game-card[data-game="color-guess"]', 'https://coulourgamss.vercel.app/');
-        setGameUrl('.game-card[data-game="roubleh"]', 'https://robla.anis.app/');
-        setGameUrl('.game-card[data-game="squares"]', 'https://morabaa.anis.app/');
-        
-        // دالة الانتقال للرابط
-        function redirectToGame(url, gameName) {
-            if (!url) {
-                console.warn(`⚠️ الرابط غير متاح للعبة: ${gameName}`);
-                alert(`عذراً، رابط لعبة "${gameName}" غير متوفر حالياً.`);
-                return;
-            }
-            
-            let finalUrl = url;
-            // التأكد من وجود البروتوكول (https)
-            if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
-                finalUrl = 'https://' + finalUrl;
-            }
-            
-            // فتح الرابط في نفس الصفحة
-            window.location.href = finalUrl;
-        }
-        
-        // إضافة حدث النقر لكل بطاقة
-        cards.forEach(card => {
-            // جعل المؤشر يدل على الضغط
-            card.style.cursor = 'pointer';
-            
-            // الحصول على رابط البطاقة وعنوانها
-            const url = card.getAttribute('data-url');
-            const titleElement = card.querySelector('.game-title');
-            const gameTitle = titleElement ? titleElement.innerText : 'اللعبة';
-            
-            // حدث النقر
-            card.addEventListener('click', (e) => {
-                e.stopPropagation(); // منع أي تداخل
+منع أي تداخل
                 if (url) {
                     redirectToGame(url, gameTitle);
                 } else {
