@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>بوابة الألعاب | تحديات ذهنية + روبلة الأسئلة</title>
+    <title>بوابة الألعاب | تحديات ذهنية + روبلة الأسئلة + النرد الملون</title>
     <style>
         * {
             margin: 0;
@@ -68,7 +68,7 @@
             font-weight: 500;
         }
 
-        /* شبكة البطاقات */
+        /* شبكة البطاقات - تستوعب 6 عناصر */
         .games-grid {
             display: flex;
             flex-wrap: wrap;
@@ -216,11 +216,12 @@
             opacity: 0;
         }
 
-        .game-card:nth-child(1) { animation-delay: 0.1s; }
-        .game-card:nth-child(2) { animation-delay: 0.2s; }
-        .game-card:nth-child(3) { animation-delay: 0.3s; }
-        .game-card:nth-child(4) { animation-delay: 0.4s; }
-        .game-card:nth-child(5) { animation-delay: 0.5s; } /* البطاقة الجديدة */
+        .game-card:nth-child(1) { animation-delay: 0.05s; }
+        .game-card:nth-child(2) { animation-delay: 0.12s; }
+        .game-card:nth-child(3) { animation-delay: 0.19s; }
+        .game-card:nth-child(4) { animation-delay: 0.26s; }
+        .game-card:nth-child(5) { animation-delay: 0.33s; }
+        .game-card:nth-child(6) { animation-delay: 0.40s; } /* البطاقة الجديدة السادسة */
 
         /* تحسين للأجهزة المحمولة */
         @media (max-width: 780px) {
@@ -260,14 +261,19 @@
         .game-card[data-game="squares"]:hover {
             border-color: #14b8a6;
         }
+        /* نمط مميز للعبة النرد الملون */
+        .game-card[data-game="colored-dice"]:hover {
+            border-color: #f59e0b;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="hero">
-        <h1>🎮 ألعاب التحدي 🧩 + روبلة الأسئلة 🃏</h1>
-        <p>اختر لعبتك المفضلة وابدأ المغامرة الذهنية | اختبر معلوماتك في روبلة الأسئلة</p>
+        <h1>🎲 بوابة الألعاب الشاملة 🎨 + روبلة الأسئلة والنرد الملون</h1>
+        <p>اختر لعبتك المفضلة وابدأ المغامرة الذهنية | تحديات عقلية، ألوان، مربعات، ونرد ملون ممتع</p>
     </div>
 
     <div class="games-grid">
@@ -286,7 +292,7 @@
         </div>
 
         <!-- الخانة 2: اسأل تربح -->
-        <div class="game-card" data-game="ask-win" data-url="burotime-jw7c.vercel.app/">
+        <div class="game-card" data-game="ask-win" data-url="https://burotime-jw7c.vercel.app/">
             <div class="card-icon">
                 ❓
             </div>
@@ -327,7 +333,7 @@
             </div>
         </div>
 
-        <!-- الخانة 5 (الجديدة): لعبة المربعات -->
+        <!-- الخانة 5: لعبة المربعات -->
         <div class="game-card" data-game="squares" data-url="https://morabaa.vercel.app/">
             <div class="card-icon">
                 🔲🧩
@@ -340,10 +346,24 @@
                 <span>🎯</span> اضغط للعب
             </div>
         </div>
+
+        <!-- الخانة 6 (الجديدة): لعبة النرد الملون -->
+        <div class="game-card" data-game="colored-dice" data-url="https://tchaktchaykalmlawana.vercel.app/">
+            <div class="card-icon">
+                🎲🌈
+            </div>
+            <div class="game-title">النرد الملون</div>
+            <div class="game-desc">
+                لعبة النرد بألوان زاهية وتجربة حظ ممتعة | ألقِ النرد واكتشف الألوان الساحرة
+            </div>
+            <div class="play-btn">
+                <span>🎨</span> اضغط للعب
+            </div>
+        </div>
     </div>
     
     <div class="footer">
-        ⚡ اضغط على أي خانة للانتقال مباشرة إلى اللعبة | استمتع بتحدي روبلة الأسئلة ولعبة المربعات
+        ⚡ اضغط على أي خانة للانتقال مباشرة إلى اللعبة | استمتع بتحدي روبلة الأسئلة، لعبة المربعات، و النرد الملون الجديد
     </div>
 </div>
 
@@ -352,7 +372,7 @@
         // الحصول على جميع البطاقات
         const cards = document.querySelectorAll('.game-card');
         
-        // تعريف دالة لتحديث وإصلاح الروابط
+        // تعريف دالة لتحديث وإصلاح الروابط (أمان إضافي)
         function setGameUrl(selector, url) {
             const card = document.querySelector(selector);
             if (card) {
@@ -363,14 +383,16 @@
             }
         }
         
-        // ضبط الروابط بشكل آمن
+        // ضبط الروابط بشكل آمن مع تحديث الرابط الجديد للعبة النرد الملون
         setGameUrl('.game-card[data-game="find-number"]', 'https://numgams.vercel.app/');
         setGameUrl('.game-card[data-game="ask-win"]', 'https://burotime-jw7c.vercel.app/');
         setGameUrl('.game-card[data-game="color-guess"]', 'https://coulourgamss.vercel.app/');
         setGameUrl('.game-card[data-game="roubleh"]', 'https://robla.vercel.app/');
         setGameUrl('.game-card[data-game="squares"]', 'https://morabaa.vercel.app/');
+        // الرابط المخصص للعبة النرد الملون (تم إضافته بناءً على طلبك)
+        setGameUrl('.game-card[data-game="colored-dice"]', 'https://tchaktchaykalmlawana.vercel.app/');
         
-        // دالة الانتقال للرابط
+        // دالة الانتقال للرابط مع معالجة آمنة
         function redirectToGame(url, gameName) {
             if (!url) {
                 console.warn(`⚠️ الرابط غير متاح للعبة: ${gameName}`);
@@ -379,16 +401,16 @@
             }
             
             let finalUrl = url;
-            // التأكد من وجود البروتوكول (https)
+            // التأكد من وجود البروتوكول (https) بشكل صحيح
             if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
                 finalUrl = 'https://' + finalUrl;
             }
             
-            // فتح الرابط في نفس الصفحة
+            // فتح الرابط في نفس الصفحة (تجربة سلسة)
             window.location.href = finalUrl;
         }
         
-        // إضافة حدث النقر لكل بطاقة
+        // إضافة حدث النقر لكل بطاقة (بما فيها البطاقة السادسة)
         cards.forEach(card => {
             // جعل المؤشر يدل على الضغط
             card.style.cursor = 'pointer';
@@ -398,13 +420,15 @@
             const titleElement = card.querySelector('.game-title');
             const gameTitle = titleElement ? titleElement.innerText : 'اللعبة';
             
-            // حدث النقر
+            // حدث النقر الرئيسي
             card.addEventListener('click', (e) => {
                 e.stopPropagation(); // منع أي تداخل
-                if (url) {
-                    redirectToGame(url, gameTitle);
+                // التحقق من الرابط مرة أخرى للتأكد من أنه محدث حتى لو حدث تغيير ديناميكي
+                let currentUrl = card.getAttribute('data-url');
+                if (currentUrl) {
+                    redirectToGame(currentUrl, gameTitle);
                 } else {
-                    alert(`⚠️ لم يتم تعيين رابط لعبة "${gameTitle}"`);
+                    alert(`⚠️ لم يتم تعيين رابط لعبة "${gameTitle}"، يرجى المحاولة لاحقاً.`);
                 }
             });
             
@@ -421,13 +445,32 @@
             });
         });
         
-        // تسجيل في الكونسول للتأكد من الروابط النهائية
-        console.log('✅ تم تحميل واجهة الألعاب بنجاح مع جميع الروابط المحدثة');
-        console.log('📌 الرابط 1 (لعبة ايجاد الرقم):', document.querySelector('[data-game="find-number"]')?.getAttribute('data-url'));
+        // تسجيل شامل للتأكد من الروابط النهائية ووجود اللعبة الجديدة
+        console.log('✅ تم تحميل واجهة الألعاب بنجاح مع جميع الروابط المحدثة + لعبة النرد الملون');
+        console.log('📌 الرابط 1 (لعبة إيجاد الرقم):', document.querySelector('[data-game="find-number"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 2 (اسأل تربح):', document.querySelector('[data-game="ask-win"]')?.getAttribute('data-url'));
-        console.log('📌 الرابط 3 (تخمين الالوان):', document.querySelector('[data-game="color-guess"]')?.getAttribute('data-url'));
+        console.log('📌 الرابط 3 (تخمين الألوان):', document.querySelector('[data-game="color-guess"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 4 (روبلة الأسئلة):', document.querySelector('[data-game="roubleh"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 5 (لعبة المربعات):', document.querySelector('[data-game="squares"]')?.getAttribute('data-url'));
+        console.log('📌 الرابط 6 (النرد الملون - الجديد):', document.querySelector('[data-game="colored-dice"]')?.getAttribute('data-url'));
+        
+        // فحص إضافي للتأكد من أن بطاقة النرد الملون موجودة في الـ DOM
+        const coloredDiceCard = document.querySelector('[data-game="colored-dice"]');
+        if (coloredDiceCard) {
+            console.log('🎉 تم إضافة بطاقة "النرد الملون" بنجاح إلى الشبكة!');
+            // التأكد من أن الرابط يحتوي على القيمة المطلوبة
+            const diceUrl = coloredDiceCard.getAttribute('data-url');
+            if (diceUrl === 'https://tchaktchaykalmlawana.vercel.app/') {
+                console.log('✅ رابط لعبة النرد الملون صحيح ومطابق للمطلوب: ' + diceUrl);
+            } else {
+                console.warn('⚠️ الرابط الحالي للنرد الملون:', diceUrl);
+                // إعادة تعيين الرابط لضمانه في حال أي خطأ غير متوقع
+                coloredDiceCard.setAttribute('data-url', 'https://tchaktchaykalmlawana.vercel.app/');
+                console.log('🔁 تم إعادة تعيين رابط النرد الملون يدوياً.');
+            }
+        } else {
+            console.error('❌ لم يتم العثور على بطاقة النرد الملون، تأكد من وجودها في الـ HTML');
+        }
     })();
 </script>
 </body>
