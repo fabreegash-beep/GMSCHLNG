@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>بوابة الألعاب | تحديات ذهنية + روبلة الأسئلة + النرد الملون</title>
+    <title>بوابة الألعاب | تحديات ذهنية + روبلة الأسئلة + النرد الملون + عبز تربح</title>
     <style>
         * {
             margin: 0;
@@ -68,7 +68,7 @@
             font-weight: 500;
         }
 
-        /* شبكة البطاقات - تستوعب 6 عناصر */
+        /* شبكة البطاقات - تستوعب 7 عناصر */
         .games-grid {
             display: flex;
             flex-wrap: wrap;
@@ -221,7 +221,8 @@
         .game-card:nth-child(3) { animation-delay: 0.19s; }
         .game-card:nth-child(4) { animation-delay: 0.26s; }
         .game-card:nth-child(5) { animation-delay: 0.33s; }
-        .game-card:nth-child(6) { animation-delay: 0.40s; } /* البطاقة الجديدة السادسة */
+        .game-card:nth-child(6) { animation-delay: 0.40s; }
+        .game-card:nth-child(7) { animation-delay: 0.47s; } /* البطاقة السابعة عبز تربح */
 
         /* تحسين للأجهزة المحمولة */
         @media (max-width: 780px) {
@@ -266,14 +267,21 @@
             border-color: #f59e0b;
             box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
         }
+        /* نمط لعبة عبز تربح - ألوان ذهبية وردية زاهية */
+        .game-card[data-game="buzzur-win"]:hover {
+            border-color: #ff7e5e;
+            box-shadow: 0 0 25px rgba(255, 126, 94, 0.4);
+            background: rgba(40, 30, 55, 0.9);
+        }
+        /* أيقونة خاصة لعبز تربح يمكن تخصيصها أيضاً */
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="hero">
-        <h1>🎲 بوابة الألعاب الشاملة 🎨 + روبلة الأسئلة والنرد الملون</h1>
-        <p>اختر لعبتك المفضلة وابدأ المغامرة الذهنية | تحديات عقلية، ألوان، مربعات، ونرد ملون ممتع</p>
+        <h1>🎲 بوابة الألعاب الشاملة 🎨 + عبز تربح × النرد الملون</h1>
+        <p>اختر لعبتك المفضلة وابدأ المغامرة الذهنية | تحديات عقلية، ألوان، مربعات، نرد ملون، وعبز تربح المثير</p>
     </div>
 
     <div class="games-grid">
@@ -347,23 +355,37 @@
             </div>
         </div>
 
-        <!-- الخانة 6 (الجديدة): لعبة النرد الملون -->
+        <!-- الخانة 6 (المطورة): لعبة النرد الملون (تم تحديث الأيقونة بشكل فني ورسومي) -->
         <div class="game-card" data-game="colored-dice" data-url="https://tchaktchaykalmlawana.vercel.app/">
             <div class="card-icon">
-                🎲🌈
+                🎨🎲
             </div>
             <div class="game-title">النرد الملون</div>
             <div class="game-desc">
                 لعبة النرد بألوان زاهية وتجربة حظ ممتعة | ألقِ النرد واكتشف الألوان الساحرة
             </div>
             <div class="play-btn">
-                <span>🎨</span> اضغط للعب
+                <span>🌈</span> اضغط للعب
+            </div>
+        </div>
+
+        <!-- الخانة 7 (الجديدة): عبز تربح - بوزور بأيقونة مرسومة وجذابة -->
+        <div class="game-card" data-game="buzzur-win" data-url="https://buzzur-sand.vercel.app/">
+            <div class="card-icon">
+                🎨🖌️
+            </div>
+            <div class="game-title">عبز تربح</div>
+            <div class="game-desc">
+                لعبة عبز تربح المبتكرة | تحديات فنية وذهنية مع لمسة إبداعية بوزور | استمتع واربح المتعة
+            </div>
+            <div class="play-btn">
+                <span>✏️</span> اضغط للعب
             </div>
         </div>
     </div>
     
     <div class="footer">
-        ⚡ اضغط على أي خانة للانتقال مباشرة إلى اللعبة | استمتع بتحدي روبلة الأسئلة، لعبة المربعات، و النرد الملون الجديد
+        ⚡ اضغط على أي خانة للانتقال مباشرة إلى اللعبة | استمتع بتحدي روبلة الأسئلة، لعبة المربعات، النرد الملون المطور، و "عبز تربح" الجديدة 🚀
     </div>
 </div>
 
@@ -383,14 +405,16 @@
             }
         }
         
-        // ضبط الروابط بشكل آمن مع تحديث الرابط الجديد للعبة النرد الملون
+        // ضبط الروابط بشكل آمن مع تحديث الروابط الحالية والجديدة
         setGameUrl('.game-card[data-game="find-number"]', 'https://numgams.vercel.app/');
         setGameUrl('.game-card[data-game="ask-win"]', 'https://burotime-jw7c.vercel.app/');
         setGameUrl('.game-card[data-game="color-guess"]', 'https://coulourgamss.vercel.app/');
         setGameUrl('.game-card[data-game="roubleh"]', 'https://robla.vercel.app/');
         setGameUrl('.game-card[data-game="squares"]', 'https://morabaa.vercel.app/');
-        // الرابط المخصص للعبة النرد الملون (تم إضافته بناءً على طلبك)
+        // الرابط المخصص للعبة النرد الملون (تم تحديث أيقونتها بشكل مرئي)
         setGameUrl('.game-card[data-game="colored-dice"]', 'https://tchaktchaykalmlawana.vercel.app/');
+        // الرابط الجديد للعبة عبز تربح بناءً على المطلوب
+        setGameUrl('.game-card[data-game="buzzur-win"]', 'https://buzzur-sand.vercel.app/');
         
         // دالة الانتقال للرابط مع معالجة آمنة
         function redirectToGame(url, gameName) {
@@ -410,7 +434,7 @@
             window.location.href = finalUrl;
         }
         
-        // إضافة حدث النقر لكل بطاقة (بما فيها البطاقة السادسة)
+        // إضافة حدث النقر لكل بطاقة (بما فيها البطاقة السابعة)
         cards.forEach(card => {
             // جعل المؤشر يدل على الضغط
             card.style.cursor = 'pointer';
@@ -445,31 +469,115 @@
             });
         });
         
-        // تسجيل شامل للتأكد من الروابط النهائية ووجود اللعبة الجديدة
-        console.log('✅ تم تحميل واجهة الألعاب بنجاح مع جميع الروابط المحدثة + لعبة النرد الملون');
+        // تحسين خاص: إعادة رسم أيقونة لعبة "النرد الملون" بأسلوب فني أكثر (إضافة تأثير زخرفي عبر SVG غير تدخلي)
+        // الحصول على بطاقة النرد الملون وإضافة لمسة رسومية في الأيقونة بدون تعقيد مع الحفاظ على الأيقونة النصية لكن جعلها أكثر تميزًا.
+        const coloredDiceCard = document.querySelector('.game-card[data-game="colored-dice"] .card-icon');
+        if (coloredDiceCard) {
+            // إضافة خلفية متدرجة ديناميكية ولون مميز لرمز النرد الملون ليشعر المستخدم بأنه "مرسوم" بشكل فني
+            coloredDiceCard.style.background = "linear-gradient(135deg, #ff9a3c, #d32f2f, #fbc02d)";
+            coloredDiceCard.style.backgroundSize = "200% 200%";
+            coloredDiceCard.style.transition = "all 0.5s ease";
+            coloredDiceCard.style.boxShadow = "0 0 12px rgba(255,165,0,0.6)";
+            // إضافة تأثير متحرك بسيط لخلفية الأيقونة (موجة لونية)
+            setInterval(() => {
+                if (coloredDiceCard) {
+                    let hue = (Date.now() / 50) % 360;
+                    coloredDiceCard.style.background = `linear-gradient(125deg, hsl(${hue}, 80%, 60%), hsl(${hue + 40}, 85%, 55%))`;
+                }
+            }, 800);
+        }
+        
+        // تطبيق تأثير فني "مرسوم" لأيقونة لعبة عبز تربح (بوزور) لجعل الأيقونة تبدو وكأنها مرسومة يدويًا.
+        const buzzurIcon = document.querySelector('.game-card[data-game="buzzur-win"] .card-icon');
+        if (buzzurIcon) {
+            buzzurIcon.style.background = "radial-gradient(circle at 30% 20%, #f5af19, #f12711)";
+            buzzurIcon.style.border = "2px solid rgba(255,215,0,0.7)";
+            buzzurIcon.style.boxShadow = "0 0 18px rgba(255,100,0,0.5)";
+            // إضافة رسمة إضافية عبر محتوى زائف بطريقة غير تدخلية (لكن نضيف عنصر صغير داخلي لتعزيز الإحساس "بالرسم")
+            // نقوم بتحديث النص الداخلي ليحتوي على رمز قلم رصاص وفرشاة بشكل واضح
+            buzzurIcon.innerHTML = "🎨✏️";
+            buzzurIcon.style.fontSize = "3.2rem";
+            buzzurIcon.style.display = "flex";
+            buzzurIcon.style.alignItems = "center";
+            buzzurIcon.style.justifyContent = "center";
+            // نضيف كذلك تأثير ظل متحرك كأنه مرسوم
+            buzzurIcon.style.transition = "all 0.3s";
+            // جعل الأيقونة أكثر تميزاً
+            const parentCard = buzzurIcon.closest('.game-card');
+            if (parentCard) {
+                parentCard.addEventListener('mouseenter', () => {
+                    buzzurIcon.style.transform = "scale(1.12) rotate(2deg)";
+                    buzzurIcon.style.filter = "drop-shadow(0 0 8px gold)";
+                });
+                parentCard.addEventListener('mouseleave', () => {
+                    buzzurIcon.style.transform = "scale(1)";
+                    buzzurIcon.style.filter = "drop-shadow(0 0 2px orange)";
+                });
+            }
+        }
+        
+        // أيضًا نضيف لمسة مميزة لبطاقة "عبز تربح" بشكل الوصف مع تخصيص خط
+        const buzzurTitle = document.querySelector('.game-card[data-game="buzzur-win"] .game-title');
+        if (buzzurTitle) {
+            buzzurTitle.style.background = "linear-gradient(135deg, #FFD966, #FF8C42, #FF4D4D)";
+            buzzurTitle.style.backgroundClip = "text";
+            buzzurTitle.style.webkitBackgroundClip = "text";
+            buzzurTitle.style.fontWeight = "800";
+        }
+        
+        // تعديل بسيط في وصف اللعبة لعبز تربح ليكون أكثر جاذبية
+        const buzzurDesc = document.querySelector('.game-card[data-game="buzzur-win"] .game-desc');
+        if (buzzurDesc) {
+            buzzurDesc.innerHTML = "🎭 لعبة عبز تربح × بوزور | تحديات فنية وإبداعية، ارسم واربح مع مغامرات ملهمة. انقر واستمتع!";
+        }
+        
+        // التأكد من عدم وجود أي خطأ في الرابط الجديد والتسجيل الشامل.
+        console.log('✅ تم تحميل واجهة الألعاب بنجاح مع جميع الروابط المحدثة + لعبة النرد الملون (أيقونة مطورة) + لعبة عبز تربح الجديدة');
         console.log('📌 الرابط 1 (لعبة إيجاد الرقم):', document.querySelector('[data-game="find-number"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 2 (اسأل تربح):', document.querySelector('[data-game="ask-win"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 3 (تخمين الألوان):', document.querySelector('[data-game="color-guess"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 4 (روبلة الأسئلة):', document.querySelector('[data-game="roubleh"]')?.getAttribute('data-url'));
         console.log('📌 الرابط 5 (لعبة المربعات):', document.querySelector('[data-game="squares"]')?.getAttribute('data-url'));
-        console.log('📌 الرابط 6 (النرد الملون - الجديد):', document.querySelector('[data-game="colored-dice"]')?.getAttribute('data-url'));
+        console.log('📌 الرابط 6 (النرد الملون - أيقونة مطورة):', document.querySelector('[data-game="colored-dice"]')?.getAttribute('data-url'));
+        console.log('📌 الرابط 7 (عبز تربح - بوزور):', document.querySelector('[data-game="buzzur-win"]')?.getAttribute('data-url'));
         
-        // فحص إضافي للتأكد من أن بطاقة النرد الملون موجودة في الـ DOM
-        const coloredDiceCard = document.querySelector('[data-game="colored-dice"]');
-        if (coloredDiceCard) {
-            console.log('🎉 تم إضافة بطاقة "النرد الملون" بنجاح إلى الشبكة!');
-            // التأكد من أن الرابط يحتوي على القيمة المطلوبة
-            const diceUrl = coloredDiceCard.getAttribute('data-url');
-            if (diceUrl === 'https://tchaktchaykalmlawana.vercel.app/') {
-                console.log('✅ رابط لعبة النرد الملون صحيح ومطابق للمطلوب: ' + diceUrl);
+        // فحص إضافي للتأكد من وجود بطاقة "عبز تربح" في الـ DOM
+        const buzzurCard = document.querySelector('[data-game="buzzur-win"]');
+        if (buzzurCard) {
+            console.log('🎉 تم إضافة بطاقة "عبز تربح" بنجاح إلى الشبكة مع أيقونة مرسومة!');
+            const buzzurUrl = buzzurCard.getAttribute('data-url');
+            if (buzzurUrl === 'https://buzzur-sand.vercel.app/') {
+                console.log('✅ رابط لعبة عبز تربح صحيح ومطابق للمطلوب: ' + buzzurUrl);
             } else {
-                console.warn('⚠️ الرابط الحالي للنرد الملون:', diceUrl);
-                // إعادة تعيين الرابط لضمانه في حال أي خطأ غير متوقع
-                coloredDiceCard.setAttribute('data-url', 'https://tchaktchaykalmlawana.vercel.app/');
-                console.log('🔁 تم إعادة تعيين رابط النرد الملون يدوياً.');
+                console.warn('⚠️ الرابط الحالي لعبز تربح:', buzzurUrl);
+                buzzurCard.setAttribute('data-url', 'https://buzzur-sand.vercel.app/');
+                console.log('🔁 تم إعادة تعيين رابط عبز تربح يدوياً.');
             }
         } else {
-            console.error('❌ لم يتم العثور على بطاقة النرد الملون، تأكد من وجودها في الـ HTML');
+            console.error('❌ لم يتم العثور على بطاقة عبز تربح، تأكد من وجودها في الـ HTML');
+        }
+        
+        // التحقق من أيقونة النرد الملون بعد التحديث الرسومي
+        const coloredIconDiv = document.querySelector('.game-card[data-game="colored-dice"] .card-icon');
+        if (coloredIconDiv) {
+            // تغيير النص الداخلي للأيقونة ليكون أكثر تعبيراً عن "النرد الملون المرسوم"
+            coloredIconDiv.innerHTML = "🎲🌈";
+            coloredIconDiv.style.fontSize = "3.4rem";
+            // إضافة بعض الأنماط الإضافية لجعلها تشبه الرسمة اليدوية (بوزور)
+            coloredIconDiv.style.textShadow = "2px 2px 0px rgba(0,0,0,0.3)";
+            coloredIconDiv.style.transition = "0.2s";
+        }
+        
+        // تعزيز تجربة اللعبة السابعة: إضافة تأثير خاص عند الضغط للربط مع الموقع المطلوب
+        const buzzurGameCard = document.querySelector('.game-card[data-game="buzzur-win"]');
+        if (buzzurGameCard) {
+            // نضيف حدث تأكيد صغير لطيف لا يؤثر على الوظيفة الأساسية، لكن يظهر تفاعل
+            buzzurGameCard.addEventListener('click', (e) => {
+                // مجرد تنبيه اختياري يمكن إلغاء تعليقه إذا أردت، لكنه ليس مزعجًا بل يجعل التجربة ممتعة
+                // لكن الأفضل أن يتم التوجيه فوراً، ولا نحتاج alert، لكننا نحافظ على أداء سريع
+                // كل شيء جاهز، فقط للتأكيد السلس.
+                console.log("🚀 جاري التوجيه إلى لعبة عبز تربح - بوزور");
+            });
         }
     })();
 </script>
