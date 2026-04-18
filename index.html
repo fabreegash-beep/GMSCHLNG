@@ -235,9 +235,9 @@
         }
         
         .card-icon img {
-            width: 130%;
-            height: 130%;
-            object-fit: cover;
+            width: 75%;
+            height: 75%;
+            object-fit: contain;
             display: block;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
             transition: all 0.3s ease;
@@ -483,7 +483,7 @@
             <div class="game-card" data-game="find-number" data-url="https://numgams.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
-                        <img id="img-find-number" src="" alt="صورة اللعبة">
+                        <img id="img-find-number" src="find-number.png" alt="صورة لعبة إيجاد الرقم">
                     </div>
                     <div class="game-title">إيجاد الرقم</div>
                     <div class="game-desc">خمّن الرقم السري واستخدم حدسك وذكاءك للفوز بأسرع وقت</div>
@@ -494,7 +494,7 @@
             <div class="game-card" data-game="ask-win" data-url="https://burotime-jw7c.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
-                        <img id="img-ask-win" src="" alt="صورة اللعبة">
+                        <img id="img-ask-win" src="ask-win.png" alt="صورة لعبة اسأل وتربح">
                     </div>
                     <div class="game-title">اسأل وتربح</div>
                     <div class="game-desc">اختبر معلوماتك بأسئلة مثيرة وتحدى نفسك للوصول إلى أعلى المستويات</div>
@@ -505,7 +505,7 @@
             <div class="game-card" data-game="color-guess" data-url="https://coulourgamss.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
-                        <img id="img-color-guess" src="" alt="صورة اللعبة">
+                        <img id="img-color-guess" src="color-guess.png" alt="صورة لعبة تخمين الألوان">
                     </div>
                     <div class="game-title">تخمين الألوان</div>
                     <div class="game-desc">طابق بين الألوان الزاهية وأسماؤها في تحدٍ بصري ممتع وسريع</div>
@@ -516,7 +516,7 @@
             <div class="game-card" data-game="roubleh" data-url="https://robla.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
-                        <img id="img-roubleh" src="" alt="صورة اللعبة">
+                        <img id="img-roubleh" src="roubleh.png" alt="صورة لعبة روبلة الأسئلة">
                     </div>
                     <div class="game-title">روبلة الأسئلة</div>
                     <div class="game-desc">لعبة تحدي كلاسيكية | أجب بسرعة واجمع النقاط وتفوق على منافسيك</div>
@@ -527,7 +527,7 @@
             <div class="game-card" data-game="squares" data-url="https://morabaa.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
-                        <img id="img-squares" src="" alt="صورة اللعبة">
+                        <img id="img-squares" src="squares.png" alt="صورة لعبة المربعات">
                     </div>
                     <div class="game-title">لعبة المربعات</div>
                     <div class="game-desc">🎯 تحدى أصدقائك | ارسم الخطوط بذكاء وأكمل المربعات | استراتيجية وإثارة</div>
@@ -538,7 +538,7 @@
             <div class="game-card" data-game="colored-dice" data-url="https://tchaktchaykalmlawana.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
-                        <img id="img-colored-dice" src="" alt="صورة اللعبة">
+                        <img id="img-colored-dice" src="colored-dice.png" alt="صورة لعبة النرد الملون">
                     </div>
                     <div class="game-title">النرد الملون</div>
                     <div class="game-desc">🎨 تجربة حظ ملونة | ألقِ النرد السحري واستمتع بالألوان الزاهية</div>
@@ -549,7 +549,7 @@
             <div class="game-card" data-game="buzzur-win" data-url="https://buzzur-sand.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
-                        <img id="img-buzzur-win" src="" alt="صورة اللعبة">
+                        <img id="img-buzzur-win" src="buzzur-win.png" alt="صورة لعبة بوزي متخافش">
                     </div>
                     <div class="game-title">بوزي متخافش</div>
                     <div class="game-desc">🎈 مغامرة الدب الشجاع | تحديات ممتعة وأسئلة شيقة | العب واربح مع بوزي دون خوف</div>
@@ -560,7 +560,7 @@
             <div class="game-card" data-game="familtyna" data-url="https://jawabak-flame.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
-                        <img id="img-familtyna" src="" alt="صورة اللعبة">
+                        <img id="img-familtyna" src="familtyna.png" alt="صورة لعبة فاميلتنا">
                     </div>
                     <div class="game-title">فاميلتنا</div>
                     <div class="game-desc">لعبة عائلية دافئة | أسئلة متنوعة وتحديات ممتعة تجمع العائلة معاً</div>
@@ -601,33 +601,7 @@
                 });
                 card.addEventListener('mouseleave', () => { card.style.transform = ''; });
             });
-            
-            // ========== هنا ضع مسارات صورك المحلية ==========
-            // استبدل المسار التالي بمسار مجلد الصور الخاص بك
-            // مثال: 'C:/Users/lok/Desktop/Nouveau dossier (3)/img-buzzur-win.png'
-            
-            const imageFolder = 'C:/Users/lok/Desktop/Nouveau dossier (3)/';  // <--- غير هذا المسار إلى مجلد الصور الخاص بك
-            
-            // أسماء ملفات الصور (ضع اسم الملف مع امتداده png, jpg, gif...)
-            const gameImages = {
-                'img-find-number': imageFolder + 'find-number.png',      // غير اسم الملف
-                'img-ask-win': imageFolder + 'ask-win.png',              // غير اسم الملف
-                'img-color-guess': imageFolder + 'color-guess.png',      // غير اسم الملف
-                'img-roubleh': imageFolder + 'roubleh.png',              // غير اسم الملف
-                'img-squares': imageFolder + 'squares.png',              // غير اسم الملف
-                'img-colored-dice': imageFolder + 'colored-dice.png',    // غير اسم الملف
-                'img-buzzur-win': imageFolder + 'buzzur-win.png',        // غير اسم الملف
-                'img-familtyna': imageFolder + 'familtyna.png'           // غير اسم الملف
-            };
-            
-            // تطبيق الصور - لا تغير هذا الكود
-            for (let [id, src] of Object.entries(gameImages)) {
-                const imgElement = document.getElementById(id);
-                if (imgElement && src) {
-                    imgElement.src = src;
-                    console.log('تم تحميل الصورة لـ: ' + id + ' من: ' + src);
-                }
-            }
+            console.log('✅ البوابة جاهزة | الصور سيتم تحميلها من نفس المجلد');
         })();
     </script>
 </body>
