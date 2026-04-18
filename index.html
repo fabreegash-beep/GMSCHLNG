@@ -217,7 +217,6 @@
             transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
         }
 
-        /* ========== أيقونات متحركة - الإطار والصورة معاً ========== */
         .card-icon {
             width: 110px;
             height: 110px;
@@ -234,9 +233,10 @@
             overflow: hidden;
         }
         
+        /* ===== الحل الجديد لحجم الصورة ===== */
         .card-icon img {
-            width: 130%;
-            height: 130%;
+            width: min(75px, 70%);
+            height: min(75px, 70%);
             object-fit: contain;
             display: block;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
@@ -281,9 +281,7 @@
             transform: scale(1.05);
         }
 
-        /* ===== حركات مختلفة لكل لعبة - الإطار والصورة معاً ===== */
-        
-        /* اللعبة 1: إيجاد الرقم - نبض مع دوران خفيف */
+        /* حركات مختلفة لكل لعبة */
         .game-card[data-game="find-number"] .card-icon {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             animation: pulseRotate 2s ease-in-out infinite;
@@ -300,7 +298,6 @@
             50% { transform: scale(1.08) rotate(5deg); }
         }
 
-        /* اللعبة 2: اسأل وتربح - اهتزاز لطيف */
         .game-card[data-game="ask-win"] .card-icon {
             background: linear-gradient(135deg, #10b981, #059669);
             animation: gentleShake 1.5s ease-in-out infinite;
@@ -319,7 +316,6 @@
             75% { transform: translateX(5px); }
         }
 
-        /* اللعبة 3: تخمين الألوان - تغيير ألوان قوس قزح */
         .game-card[data-game="color-guess"] .card-icon {
             background: linear-gradient(135deg, #f97316, #ea580c);
             animation: rainbowBg 3s ease infinite;
@@ -339,7 +335,6 @@
             50% { transform: scale(1.1); filter: hue-rotate(30deg); }
         }
 
-        /* اللعبة 4: روبلة الأسئلة - دوران مستمر */
         .game-card[data-game="roubleh"] .card-icon {
             background: linear-gradient(135deg, #ec4899, #db2777);
             animation: continuousSpin 3s linear infinite;
@@ -356,7 +351,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* اللعبة 5: المربعات - قفز مربعي */
         .game-card[data-game="squares"] .card-icon {
             background: linear-gradient(135deg, #14b8a6, #0d9488);
             animation: squareJump 1.2s ease-in-out infinite;
@@ -373,7 +367,6 @@
             50% { transform: translateY(-15px) scale(1.05); }
         }
 
-        /* اللعبة 6: النرد الملون - تمايل عشوائي */
         .game-card[data-game="colored-dice"] .card-icon {
             background: linear-gradient(135deg, #f59e0b, #d97706);
             animation: diceWobble 2s ease-in-out infinite;
@@ -392,7 +385,6 @@
             75% { transform: rotate(-10deg) scale(1.05); }
         }
 
-        /* اللعبة 7: بوزي متخافش - رقص الدب */
         .game-card[data-game="buzzur-win"] .card-icon {
             background: linear-gradient(135deg, #ff7e5e, #feb47b);
             background-size: 200% 200%;
@@ -412,7 +404,6 @@
             60% { transform: translateY(-5px) rotate(8deg); }
         }
 
-        /* اللعبة 8: فاميلتنا - نبض قلب دافئ */
         .game-card[data-game="familtyna"] .card-icon {
             background: linear-gradient(135deg, #f43f5e, #e11d48);
             animation: heartBeat 1.2s ease-in-out infinite;
@@ -431,7 +422,6 @@
             60% { transform: scale(1.08); }
         }
 
-        /* تخصيص عنوان لعبة بوزي */
         .game-card[data-game="buzzur-win"] .game-title {
             background: linear-gradient(120deg, #FFD966, #FF9966, #FF6B6B);
             background-clip: text;
@@ -534,15 +524,35 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         
+        /* ===== تحسينات خاصة للهواتف ===== */
         @media (max-width: 768px) {
             body { padding: 1rem; perspective: 500px; }
             .games-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .card-inner { padding: 1.75rem 1.5rem; }
             .hero h1 { font-size: 2rem; }
-            .card-icon { width: 90px; height: 90px; }
-            .card-icon img { width: 65%; height: 65%; }
+            .card-icon { 
+                width: 90px; 
+                height: 90px; 
+            }
+            /* جعل الصورة أكبر قليلاً في الهواتف */
+            .card-icon img {
+                width: min(60px, 75%);
+                height: min(60px, 75%);
+            }
             .game-title { font-size: 1.5rem; }
             .circle { display: none; }
+        }
+        
+        /* للشاشات الصغيرة جداً (أقل من 400px) */
+        @media (max-width: 400px) {
+            .card-icon { 
+                width: 75px; 
+                height: 75px; 
+            }
+            .card-icon img {
+                width: min(50px, 75%);
+                height: min(50px, 75%);
+            }
         }
     </style>
 </head>
@@ -562,7 +572,6 @@
             <p>اختر اللعبة التي تفضلها وانطلق في رحلة مثيرة | أيقونات نابضة بالحركة وتأثيرات ثلاثية الأبعاد ساحرة</p>
         </div>
         <div class="games-grid">
-            <!-- لعبة 1: إيجاد الرقم -->
             <div class="game-card" data-game="find-number" data-url="https://numgams.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
@@ -573,7 +582,6 @@
                     <div class="play-btn"><span>▶</span><span>ابدأ اللعبة</span></div>
                 </div>
             </div>
-            <!-- لعبة 2: اسأل وتربح -->
             <div class="game-card" data-game="ask-win" data-url="https://burotime-jw7c.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
@@ -584,7 +592,6 @@
                     <div class="play-btn"><span>▶</span><span>ابدأ اللعبة</span></div>
                 </div>
             </div>
-            <!-- لعبة 3: تخمين الألوان -->
             <div class="game-card" data-game="color-guess" data-url="https://coulourgamss.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
@@ -595,7 +602,6 @@
                     <div class="play-btn"><span>▶</span><span>ابدأ اللعبة</span></div>
                 </div>
             </div>
-            <!-- لعبة 4: روبلة الأسئلة -->
             <div class="game-card" data-game="roubleh" data-url="https://robla.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
@@ -606,7 +612,6 @@
                     <div class="play-btn"><span>▶</span><span>ابدأ اللعبة</span></div>
                 </div>
             </div>
-            <!-- لعبة 5: المربعات -->
             <div class="game-card" data-game="squares" data-url="https://morabaa.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
@@ -617,7 +622,6 @@
                     <div class="play-btn"><span>🎯</span><span>ابدأ اللعبة</span></div>
                 </div>
             </div>
-            <!-- لعبة 6: النرد الملون -->
             <div class="game-card" data-game="colored-dice" data-url="https://tchaktchaykalmlawana.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
@@ -628,7 +632,6 @@
                     <div class="play-btn"><span>🌈</span><span>ابدأ اللعبة</span></div>
                 </div>
             </div>
-            <!-- لعبة 7: بوزي متخافش -->
             <div class="game-card" data-game="buzzur-win" data-url="https://buzzur-sand.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
@@ -639,7 +642,6 @@
                     <div class="play-btn"><span>🐻</span><span>خوض المغامرة</span></div>
                 </div>
             </div>
-            <!-- لعبة 8: فاميلتنا -->
             <div class="game-card" data-game="familtyna" data-url="https://jawabak-flame.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon">
@@ -684,7 +686,7 @@
                 });
                 card.addEventListener('mouseleave', () => { card.style.transform = ''; });
             });
-            console.log('✅ البوابة جاهزة | الإطارات والصور تتحرك معاً');
+            console.log('✅ البوابة جاهزة | تم تحسين حجم الصور للهواتف');
         })();
     </script>
 </body>
