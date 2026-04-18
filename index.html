@@ -8,7 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             min-height: 100vh;
@@ -213,10 +217,9 @@
             transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
         }
 
-        /* ===== الإطار الرئيسي - 130px في الحاسوب ===== */
         .card-icon {
-            width: 130px;
-            height: 130px;
+            width: 110px;
+            height: 110px;
             border-radius: 35px;
             display: flex;
             align-items: center;
@@ -230,10 +233,10 @@
             overflow: hidden;
         }
         
-        /* ===== الصورة - تغطي 80% من الإطار ===== */
+        /* ===== الحل الجديد لحجم الصورة ===== */
         .card-icon img {
-            width: 80%;
-            height: 80%;
+            width: min(200px, 200%);
+            height: min(200px, 200%);
             object-fit: contain;
             display: block;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
@@ -278,7 +281,7 @@
             transform: scale(1.05);
         }
 
-        /* ===== حركات مختلفة لكل لعبة ===== */
+        /* حركات مختلفة لكل لعبة */
         .game-card[data-game="find-number"] .card-icon {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             animation: pulseRotate 2s ease-in-out infinite;
@@ -521,36 +524,34 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         
-        /* ===== حل مشكلة الهاتف - إطار أكبر وصورة أكبر ===== */
+        /* ===== تحسينات خاصة للهواتف ===== */
         @media (max-width: 768px) {
             body { padding: 1rem; perspective: 500px; }
             .games-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .card-inner { padding: 1.75rem 1.5rem; }
             .hero h1 { font-size: 2rem; }
-            
-            /* جعل الإطار أكبر في الهاتف */
             .card-icon { 
-                width: 140px; 
-                height: 140px; 
+                width: 90px; 
+                height: 90px; 
             }
-            /* جعل الصورة تغطي 85% من الإطار */
+            /* جعل الصورة أكبر قليلاً في الهواتف */
             .card-icon img {
-                width: 85%;
-                height: 85%;
+                width: min(60px, 75%);
+                height: min(60px, 75%);
             }
             .game-title { font-size: 1.5rem; }
             .circle { display: none; }
         }
         
-        /* للشاشات الصغيرة جداً (أقل من 450px) */
-        @media (max-width: 450px) {
+        /* للشاشات الصغيرة جداً (أقل من 400px) */
+        @media (max-width: 400px) {
             .card-icon { 
-                width: 120px; 
-                height: 120px; 
+                width: 75px; 
+                height: 75px; 
             }
             .card-icon img {
-                width: 130%;
-                height: 130%;
+                width: min(50px, 75%);
+                height: min(50px, 75%);
             }
         }
     </style>
@@ -685,7 +686,7 @@
                 });
                 card.addEventListener('mouseleave', () => { card.style.transform = ''; });
             });
-            console.log('✅ البوابة جاهزة | الحاسوب: 130px، الهاتف: 140px، الصورة: 85% من الإطار');
+            console.log('✅ البوابة جاهزة | تم تحسين حجم الصور للهواتف');
         })();
     </script>
 </body>
