@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>بوابة الألعاب | تحديات ذهنية + روبلة الأسئلة + النرد الملون + عبز تربح + فاميلتنا</title>
+    <title>🎮 بوابة الألعاب الرقمية | Digital Games Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,28 +16,87 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0c0a2a 100%);
-            font-family: 'Segoe UI', 'Tajawal', 'Cairo', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 40%, #0f1a3a 100%);
+            font-family: 'Cairo', 'Segoe UI', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
             position: relative;
+            overflow-x: hidden;
+            perspective: 1000px;
         }
 
-        /* تأثير خلفية نجوم متحركة */
-        body::before {
-            content: "";
+        .bg-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.2), rgba(0,0,0,0)),
-                              radial-gradient(1px 1px at 80px 200px, rgba(255,255,255,0.15), rgba(0,0,0,0));
-            background-size: 200px 200px, 150px 150px;
-            pointer-events: none;
             z-index: 0;
+            overflow: hidden;
+        }
+
+        .gradient-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(120, 60, 255, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(255, 60, 150, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(60, 180, 255, 0.15) 0%, transparent 60%);
+            animation: gradientMove 20s ease-in-out infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-10%, -10%) rotate(5deg); }
+            50% { transform: translate(0, -5%) rotate(0deg); }
+            75% { transform: translate(10%, 0%) rotate(-5deg); }
+        }
+
+        .math-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.06;
+            background-image:
+                linear-gradient(rgba(139, 92, 246, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.5) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 30s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .floating-circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            animation: floatCircle 15s ease-in-out infinite;
+        }
+
+        .circle:nth-child(1) { width: 200px; height: 200px; top: 10%; left: 10%; animation-delay: 0s; }
+        .circle:nth-child(2) { width: 150px; height: 150px; top: 60%; right: 15%; animation-delay: -3s; border-color: rgba(236, 72, 153, 0.3); }
+        .circle:nth-child(3) { width: 250px; height: 250px; bottom: 20%; left: 20%; animation-delay: -6s; border-color: rgba(60, 180, 255, 0.3); }
+        .circle:nth-child(4) { width: 100px; height: 100px; top: 30%; right: 30%; animation-delay: -9s; }
+
+        @keyframes floatCircle {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            50% { transform: translate(30px, -30px) scale(1.1); opacity: 0.6; }
         }
 
         .container {
@@ -44,178 +106,319 @@
             z-index: 2;
         }
 
-        /* العنوان الرئيسي */
         .hero {
             text-align: center;
             margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.2));
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #a5b4fc;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.5); }
         }
 
         .hero h1 {
             font-size: clamp(2.2rem, 7vw, 3.8rem);
-            font-weight: 800;
-            background: linear-gradient(125deg, #f0f9ff, #c084fc, #60a5fa);
+            font-weight: 900;
+            background: linear-gradient(125deg, #f0f9ff 0%, #c084fc 25%, #60a5fa 50%, #f472b6 75%, #f0f9ff 100%);
+            background-size: 200% auto;
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            animation: gradientFlow 4s ease-in-out infinite;
+            text-shadow: 0 0 60px rgba(139, 92, 246, 0.5);
             letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
         }
 
         .hero p {
-            color: #a5b4fc;
-            margin-top: 0.8rem;
-            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+            font-size: 1.15rem;
             font-weight: 500;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
 
-        /* شبكة البطاقات - تستوعب 8 عناصر */
         .games-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 2.5rem;
+            margin: 2rem 0;
+            perspective: 1200px;
         }
 
-        /* تصميم الخانة */
         .game-card {
-            flex: 1;
-            min-width: 280px;
-            max-width: 320px;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(16px);
-            border-radius: 2rem;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4);
             position: relative;
-            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            cursor: pointer;
         }
 
-        /* تأثير الزاوية اللامعة */
-        .game-card::after {
+        .card-inner {
+            position: relative;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            transform-style: preserve-3d;
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .card-inner::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            inset: -1px;
+            border-radius: 32px;
+            padding: 1px;
+            background: radial-gradient(circle at 30% 20%, var(--accent-color, #8b5cf6), transparent 70%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
             opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
+            transition: opacity 0.4s;
         }
 
-        .game-card:hover::after {
-            opacity: 1;
+        .game-card:hover .card-inner::before {
+            opacity: 0.8;
         }
 
         .game-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            border-color: rgba(139, 92, 246, 0.9);
-            box-shadow: 0 30px 45px -12px rgba(0, 0, 0, 0.6);
-            background: rgba(25, 35, 65, 0.85);
+            transform: translateY(-18px) rotateX(6deg) rotateY(-4deg);
         }
 
         .game-card:active {
-            transform: translateY(-5px) scale(0.99);
-            transition-duration: 0.1s;
+            transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
         }
 
-        /* أيقونة مميزة */
         .card-icon {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(145deg, #1e293b, #0f172a);
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, var(--accent-color, #8b5cf6), var(--secondary-color, #6366f1));
             border-radius: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 3.2rem;
-            box-shadow: inset 0 2px 3px rgba(255,255,255,0.1), 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 35px var(--glow-color, rgba(139, 92, 246, 0.5)), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            transform: translateZ(25px);
+            overflow: hidden;
+        }
+        
+        .card-icon img {
+            width: 130%;
+            height: 130%;
+            object-fit: cover;
+            display: block;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
             transition: all 0.3s ease;
         }
 
-        .game-card:hover .card-icon {
-            transform: scale(1.08);
-            background: linear-gradient(145deg, #2d3a5e, #111927);
+        .card-icon::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            height: 45%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent);
+            border-radius: 28px 28px 40% 40%;
+            pointer-events: none;
+            z-index: 2;
         }
 
-        /* عنوان اللعبة */
+        .card-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 15%;
+            width: 70%;
+            height: 20px;
+            background: var(--glow-color, rgba(139, 92, 246, 0.4));
+            filter: blur(18px);
+            border-radius: 50%;
+            transition: all 0.4s;
+            transform: translateZ(-20px);
+        }
+
+        .game-card:hover .card-icon {
+            transform: translateZ(40px) scale(1.12) rotateX(-8deg) rotateY(8deg);
+            box-shadow: 0 25px 45px var(--glow-color, rgba(139, 92, 246, 0.7)), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+        
+        .game-card:hover .card-icon img {
+            transform: scale(1.05);
+        }
+
+        .game-card[data-game="find-number"] .card-icon img { animation: bounceRotate 1.8s ease infinite; }
+        .game-card[data-game="ask-win"] .card-icon img { animation: shake 2s ease infinite; }
+        .game-card[data-game="color-guess"] .card-icon img { animation: colorWave 2s ease infinite; }
+        .game-card[data-game="roubleh"] .card-icon img { animation: spinSlow 3s linear infinite; }
+        .game-card[data-game="squares"] .card-icon img { animation: squarePop 1.5s ease infinite; }
+        .game-card[data-game="colored-dice"] .card-icon img { animation: diceRollAnim 1s ease infinite; }
+        .game-card[data-game="buzzur-win"] .card-icon img { animation: bearDance 1.6s ease-in-out infinite; }
+        .game-card[data-game="familtyna"] .card-icon img { animation: heartBeatAnim 1.4s ease infinite; }
+
+        @keyframes bounceRotate {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(15deg); }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+        @keyframes colorWave {
+            0%, 100% { transform: scale(1); filter: hue-rotate(0deg); }
+            50% { transform: scale(1.1); filter: hue-rotate(20deg); }
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes squarePop {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2) rotate(90deg); }
+        }
+        @keyframes diceRollAnim {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(30deg) scale(1.2); }
+            50% { transform: rotate(0deg) scale(1.1); }
+            75% { transform: rotate(-30deg) scale(1.2); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+        @keyframes bearDance {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            30% { transform: translateY(-12px) rotate(-10deg); }
+            60% { transform: translateY(-5px) rotate(10deg); }
+        }
+        @keyframes heartBeatAnim {
+            0%, 100% { transform: scale(1); }
+            30% { transform: scale(1.2); }
+            60% { transform: scale(1.1); }
+        }
+
+        .game-card[data-game="buzzur-win"] {
+            --accent-color: #ff7e5e;
+            --secondary-color: #feb47b;
+            --glow-color: rgba(255, 126, 94, 0.7);
+        }
+        .game-card[data-game="buzzur-win"] .card-icon {
+            background: linear-gradient(135deg, #f5af19, #f12711, #ff6b6b);
+            background-size: 200% 200%;
+            animation: buzzurGradient 3s ease infinite;
+        }
+        @keyframes buzzurGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .game-card[data-game="buzzur-win"] .game-title {
+            background: linear-gradient(120deg, #FFD966, #FF9966, #FF6B6B);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+        }
+
+        .game-card[data-game="find-number"] { --accent-color: #3b82f6; --secondary-color: #1d4ed8; --glow-color: rgba(59, 130, 246, 0.5); }
+        .game-card[data-game="ask-win"] { --accent-color: #10b981; --secondary-color: #059669; --glow-color: rgba(16, 185, 129, 0.5); }
+        .game-card[data-game="color-guess"] { --accent-color: #f97316; --secondary-color: #ea580c; --glow-color: rgba(249, 115, 22, 0.5); }
+        .game-card[data-game="roubleh"] { --accent-color: #ec4899; --secondary-color: #db2777; --glow-color: rgba(236, 72, 153, 0.5); }
+        .game-card[data-game="squares"] { --accent-color: #14b8a6; --secondary-color: #0d9488; --glow-color: rgba(20, 184, 166, 0.6); }
+        .game-card[data-game="colored-dice"] { --accent-color: #f59e0b; --secondary-color: #d97706; --glow-color: rgba(245, 158, 11, 0.6); }
+        .game-card[data-game="familtyna"] { --accent-color: #f43f5e; --secondary-color: #e11d48; --glow-color: rgba(244, 63, 94, 0.5); }
+
+        .play-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-color, #8b5cf6), var(--secondary-color, #6366f1));
+            padding: 0.7rem 2rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            border: none;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 6px 18px var(--glow-color, rgba(139, 92, 246, 0.5)), 0 8px 0 var(--secondary-color, #6366f1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateZ(20px);
+        }
+        .game-card:hover .play-btn {
+            transform: translateZ(28px) translateY(-3px);
+            box-shadow: 0 8px 25px var(--glow-color, rgba(139, 92, 246, 0.6)), 0 12px 0 var(--secondary-color, #6366f1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
         .game-title {
-            font-size: 1.9rem;
+            font-size: 1.8rem;
             font-weight: 800;
             margin-bottom: 0.75rem;
             background: linear-gradient(120deg, #f1f5f9, #cbd5e6);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            transform: translateZ(15px);
         }
-
-        /* وصف تفاعلي */
         .game-desc {
-            color: #9ca3af;
-            font-size: 0.9rem;
-            margin: 0.8rem 0 1.5rem;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin: 0.8rem 0 1.6rem;
             font-weight: 500;
-            line-height: 1.5;
+            line-height: 1.6;
+            transform: translateZ(10px);
         }
-
-        /* زر التشغيل */
-        .play-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(99, 102, 241, 0.25);
-            backdrop-filter: blur(4px);
-            padding: 0.6rem 1.5rem;
-            border-radius: 60px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #c4b5fd;
-            border: 1px solid rgba(139, 92, 246, 0.5);
-            transition: all 0.25s;
-        }
-
-        .game-card:hover .play-btn {
-            background: rgba(139, 92, 246, 0.6);
-            color: white;
-            border-color: #a78bfa;
-            letter-spacing: 0.5px;
-            gap: 12px;
-        }
-
-        /* تذييل */
         .footer {
             text-align: center;
-            margin-top: 3.5rem;
-            font-size: 0.85rem;
-            color: #6b7280;
-            border-top: 1px solid rgba(99, 102, 241, 0.25);
-            padding-top: 2rem;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+            border-radius: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(10px);
         }
-
-        /* حركة ظهور البطاقات */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(35px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .footer p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.8;
         }
-
+        @keyframes fadeInUp3D {
+            from { opacity: 0; transform: translateY(60px) rotateX(15deg); }
+            to { opacity: 1; transform: translateY(0) rotateX(0deg); }
+        }
         .game-card {
-            animation: fadeInUp 0.55s ease forwards;
+            animation: fadeInUp3D 0.7s ease forwards;
             opacity: 0;
         }
-
         .game-card:nth-child(1) { animation-delay: 0.05s; }
         .game-card:nth-child(2) { animation-delay: 0.12s; }
         .game-card:nth-child(3) { animation-delay: 0.19s; }
@@ -223,287 +426,209 @@
         .game-card:nth-child(5) { animation-delay: 0.33s; }
         .game-card:nth-child(6) { animation-delay: 0.40s; }
         .game-card:nth-child(7) { animation-delay: 0.47s; }
-        .game-card:nth-child(8) { animation-delay: 0.54s; } /* الخانة الجديدة */
+        .game-card:nth-child(8) { animation-delay: 0.54s; }
 
-        /* تحسين للأجهزة المحمولة */
-        @media (max-width: 780px) {
-            body {
-                padding: 1rem;
-            }
-            .games-grid {
-                gap: 1.2rem;
-            }
-            .game-card {
-                min-width: 260px;
-                padding: 1.5rem 1rem;
-            }
-            .game-title {
-                font-size: 1.6rem;
-            }
-            .card-icon {
-                width: 75px;
-                height: 75px;
-                font-size: 2.8rem;
-            }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a1a, #1a0a2e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
         }
-
-        /* تخصيص ألوان عند hover لكل لعبة */
-        .game-card[data-game="find-number"]:hover {
-            border-color: #3b82f6;
+        .loading-overlay.hidden { opacity: 0; visibility: hidden; }
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(139, 92, 246, 0.2);
+            border-top-color: #8b5cf6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
-        .game-card[data-game="ask-win"]:hover {
-            border-color: #10b981;
-        }
-        .game-card[data-game="color-guess"]:hover {
-            border-color: #f97316;
-        }
-        .game-card[data-game="roubleh"]:hover {
-            border-color: #ec489a;
-        }
-        .game-card[data-game="squares"]:hover {
-            border-color: #14b8a6;
-        }
-        /* نمط مميز للعبة النرد الملون */
-        .game-card[data-game="colored-dice"]:hover {
-            border-color: #f59e0b;
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
-        }
-        /* نمط لعبة عبز تربح - ألوان ذهبية وردية زاهية */
-        .game-card[data-game="buzzur-win"]:hover {
-            border-color: #ff7e5e;
-            box-shadow: 0 0 25px rgba(255, 126, 94, 0.4);
-            background: rgba(40, 30, 55, 0.9);
-        }
-        /* نمط اللعبة الجديدة فاميلتنا */
-        .game-card[data-game="familtyna"]:hover {
-            border-color: #f43f5e;
-            box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
-            background: rgba(55, 30, 45, 0.9);
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @media (max-width: 768px) {
+            body { padding: 1rem; perspective: 500px; }
+            .games-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .card-inner { padding: 1.75rem 1.5rem; }
+            .hero h1 { font-size: 2rem; }
+            .card-icon { width: 90px; height: 90px; }
+            .card-icon img { width: 70%; height: 70%; }
+            .game-title { font-size: 1.5rem; }
+            .circle { display: none; }
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="hero">
-        <h1>🎲 بوابة الألعاب الشاملة 🎨 + عبز تربح × النرد الملون + فاميلتنا</h1>
-        <p>اختر لعبتك المفضلة وابدأ المغامرة الذهنية | تحديات عقلية، ألوان، مربعات، نرد ملون، وعبز تربح، وفاميلتنا</p>
-    </div>
-
-    <div class="games-grid">
-        <!-- الخانة 1: لعبة إيجاد الرقم -->
-        <div class="game-card" data-game="find-number" data-url="https://numgams.vercel.app/">
-            <div class="card-icon">🎲</div>
-            <div class="game-title">لعبة إيجاد الرقم</div>
-            <div class="game-desc">خمّن الرقم السري واستخدم ذكاءك للفوز بأسرع وقت</div>
-            <div class="play-btn"><span>▶</span> اضغط للعب</div>
-        </div>
-
-        <!-- الخانة 2: اسأل تربح -->
-        <div class="game-card" data-game="ask-win" data-url="https://ebxh1jy6toc7.space.minimax.io/">
-            <div class="card-icon">❓</div>
-            <div class="game-title">اسأل تربح</div>
-            <div class="game-desc">أجب عن الأسئلة الصعبة وتحدى معلوماتك واربح المتعة</div>
-            <div class="play-btn"><span>▶</span> اضغط للعب</div>
-        </div>
-
-        <!-- الخانة 3: تخمين الالوان -->
-        <div class="game-card" data-game="color-guess" data-url="https://coulourgamss.vercel.app/">
-            <div class="card-icon">🎨</div>
-            <div class="game-title">تخمين الألوان</div>
-            <div class="game-desc">طابق اللون مع اسمه في تحدٍ بصري ممتع وسريع</div>
-            <div class="play-btn"><span>▶</span> اضغط للعب</div>
-        </div>
-
-        <!-- الخانة 4: لعبة الروبلة -->
-        <div class="game-card" data-game="roubleh" data-url="https://robla.vercel.app/">
-            <div class="card-icon">🃏✨</div>
-            <div class="game-title">روبلة الأسئلة</div>
-            <div class="game-desc">لعبة تحدي الأسئلة الممتعة | أجب بسرعة واجمع النقاط | تحدى أصدقائك الآن</div>
-            <div class="play-btn"><span>🎴</span> اضغط للعب</div>
-        </div>
-
-        <!-- الخانة 5: لعبة المربعات -->
-        <div class="game-card" data-game="squares" data-url="https://morabaa.vercel.app/">
-            <div class="card-icon">🔲🧩</div>
-            <div class="game-title">لعبة المربعات</div>
-            <div class="game-desc">لعبة التحدي الكلاسيكية | ارسم الخطوط واكمل المربعات وتفوق على خصمك</div>
-            <div class="play-btn"><span>🎯</span> اضغط للعب</div>
-        </div>
-
-        <!-- الخانة 6: لعبة النرد الملون -->
-        <div class="game-card" data-game="colored-dice" data-url="https://tchaktchaykalmlawana.vercel.app/">
-            <div class="card-icon">🎨🎲</div>
-            <div class="game-title">النرد الملون</div>
-            <div class="game-desc">لعبة النرد بألوان زاهية وتجربة حظ ممتعة | ألقِ النرد واكتشف الألوان الساحرة</div>
-            <div class="play-btn"><span>🌈</span> اضغط للعب</div>
-        </div>
-
-        <!-- الخانة 7: لعبة عبز تربح -->
-        <div class="game-card" data-game="buzzur-win" data-url="https://buzzur-sand.vercel.app/">
-            <div class="card-icon">🎨🖌️</div>
-            <div class="game-title">عبز تربح</div>
-            <div class="game-desc">لعبة عبز تربح المبتكرة | تحديات فنية وذهنية مع لمسة إبداعية بوزور | استمتع واربح المتعة</div>
-            <div class="play-btn"><span>✏️</span> اضغط للعب</div>
-        </div>
-
-        <!-- الخانة 8 (الجديدة): فاميلتنا - الرابط الذي طلبتَه -->
-        <div class="game-card" data-game="familtyna" data-url="https://jawabak-flame.vercel.app/">
-            <div class="card-icon">👨‍👩‍👧‍👦💖</div>
-            <div class="game-title">فاميلتنا</div>
-            <div class="game-desc">لعبة عائلية ممتعة | تحديات وأسئلة متنوعة للعائلة | اجتمعوا واستمتعوا بوقتكم مع فاميلتنا</div>
-            <div class="play-btn"><span>👪</span> اضغط للعب</div>
+    <div class="loading-overlay" id="loader"><div class="loader"></div></div>
+    <div class="bg-container">
+        <div class="gradient-layer"></div>
+        <div class="math-grid"></div>
+        <div class="floating-circles">
+            <div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div>
         </div>
     </div>
-    
-    <div class="footer">
-        ⚡ اضغط على أي خانة للانتقال مباشرة إلى اللعبة | استمتع بتحدي روبلة الأسئلة، لعبة المربعات، النرد الملون المطور، "عبز تربح"، واللعبة العائلية الجديدة "فاميلتنا" 🚀
+    <div class="container">
+        <div class="hero">
+            <div class="hero-badge"><span>🎮✨</span><span>ثماني ألعاب مذهلة بأيقونات متحركة</span></div>
+            <h1>بوابتك إلى عالم الألعاب الرقمية</h1>
+            <p>اختر اللعبة التي تفضلها وانطلق في رحلة مثيرة | أيقونات نابضة بالحياة وتأثيرات ثلاثية الأبعاد ساحرة</p>
+        </div>
+        <div class="games-grid">
+            <!-- لعبة إيجاد الرقم -->
+            <div class="game-card" data-game="find-number" data-url="https://numgams.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon">
+                        <img id="img-find-number" src="" alt="صورة اللعبة">
+                    </div>
+                    <div class="game-title">إيجاد الرقم</div>
+                    <div class="game-desc">خمّن الرقم السري واستخدم حدسك وذكاءك للفوز بأسرع وقت</div>
+                    <div class="play-btn"><span>▶</span><span>ابدأ اللعبة</span></div>
+                </div>
+            </div>
+            <!-- اسأل وتربح -->
+            <div class="game-card" data-game="ask-win" data-url="https://burotime-jw7c.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon">
+                        <img id="img-ask-win" src="" alt="صورة اللعبة">
+                    </div>
+                    <div class="game-title">اسأل وتربح</div>
+                    <div class="game-desc">اختبر معلوماتك بأسئلة مثيرة وتحدى نفسك للوصول إلى أعلى المستويات</div>
+                    <div class="play-btn"><span>▶</span><span>ابدأ اللعبة</span></div>
+                </div>
+            </div>
+            <!-- تخمين الألوان -->
+            <div class="game-card" data-game="color-guess" data-url="https://coulourgamss.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon">
+                        <img id="img-color-guess" src="" alt="صورة اللعبة">
+                    </div>
+                    <div class="game-title">تخمين الألوان</div>
+                    <div class="game-desc">طابق بين الألوان الزاهية وأسماؤها في تحدٍ بصري ممتع وسريع</div>
+                    <div class="play-btn"><span>▶</span><span>ابدأ اللعبة</span></div>
+                </div>
+            </div>
+            <!-- روبلة الأسئلة -->
+            <div class="game-card" data-game="roubleh" data-url="https://robla.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon">
+                        <img id="img-roubleh" src="" alt="صورة اللعبة">
+                    </div>
+                    <div class="game-title">روبلة الأسئلة</div>
+                    <div class="game-desc">لعبة تحدي كلاسيكية | أجب بسرعة واجمع النقاط وتفوق على منافسيك</div>
+                    <div class="play-btn"><span>▶</span><span>ابدأ اللعبة</span></div>
+                </div>
+            </div>
+            <!-- لعبة المربعات -->
+            <div class="game-card" data-game="squares" data-url="https://morabaa.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon">
+                        <img id="img-squares" src="" alt="صورة اللعبة">
+                    </div>
+                    <div class="game-title">لعبة المربعات</div>
+                    <div class="game-desc">🎯 تحدى أصدقائك | ارسم الخطوط بذكاء وأكمل المربعات | استراتيجية وإثارة</div>
+                    <div class="play-btn"><span>🎯</span><span>ابدأ اللعبة</span></div>
+                </div>
+            </div>
+            <!-- النرد الملون -->
+            <div class="game-card" data-game="colored-dice" data-url="https://tchaktchaykalmlawana.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon">
+                        <img id="img-colored-dice" src="" alt="صورة اللعبة">
+                    </div>
+                    <div class="game-title">النرد الملون</div>
+                    <div class="game-desc">🎨 تجربة حظ ملونة | ألقِ النرد السحري واستمتع بالألوان الزاهية</div>
+                    <div class="play-btn"><span>🌈</span><span>ابدأ اللعبة</span></div>
+                </div>
+            </div>
+            <!-- بوزي متخافش -->
+            <div class="game-card" data-game="buzzur-win" data-url="https://buzzur-sand.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon">
+                        <img id="img-buzzur-win" src="" alt="صورة اللعبة">
+                    </div>
+                    <div class="game-title">بوزي متخافش</div>
+                    <div class="game-desc">🎈 مغامرة الدب الشجاع | تحديات ممتعة وأسئلة شيقة | العب واربح مع بوزي دون خوف</div>
+                    <div class="play-btn"><span>🐻</span><span>خوض المغامرة</span></div>
+                </div>
+            </div>
+            <!-- فاميلتنا -->
+            <div class="game-card" data-game="familtyna" data-url="https://jawabak-flame.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon">
+                        <img id="img-familtyna" src="" alt="صورة اللعبة">
+                    </div>
+                    <div class="game-title">فاميلتنا</div>
+                    <div class="game-desc">لعبة عائلية دافئة | أسئلة متنوعة وتحديات ممتعة تجمع العائلة معاً</div>
+                    <div class="play-btn"><span>👪</span><span>ابدأ اللعبة</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>⚡ اضغط على أي بطاقة للدخول مباشرة إلى اللعبة | أيقونات متحركة وتصميم ثلاثي الأبعاد نابض بالحياة 🚀</p>
+        </div>
     </div>
-</div>
-
-<script>
-    (function() {
-        // الحصول على جميع البطاقات
-        const cards = document.querySelectorAll('.game-card');
-        
-        // دالة لتحديث الروابط
-        function setGameUrl(selector, url) {
-            const card = document.querySelector(selector);
-            if (card) {
-                card.setAttribute('data-url', url);
-                console.log(`✅ تم تعيين رابط ${selector} : ${url}`);
-            } else {
-                console.warn(`⚠️ لم يتم العثور على البطاقة: ${selector}`);
+    <script>
+        (function() {
+            setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 700);
+            function navigateToGame(url, gameName) {
+                if (!url) { alert(`عذراً، لعبة "${gameName}" غير متاحة حالياً.`); return; }
+                let finalUrl = url;
+                if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) finalUrl = 'https://' + finalUrl;
+                window.location.href = finalUrl;
             }
-        }
-        
-        // ضبط الروابط بشكل آمن مع تحديث الروابط الحالية والجديدة
-        setGameUrl('.game-card[data-game="find-number"]', 'https://numgams.vercel.app/');
-        setGameUrl('.game-card[data-game="ask-win"]', 'https://ebxh1jy6toc7.space.minimax.io/');
-        setGameUrl('.game-card[data-game="color-guess"]', 'https://coulourgamss.vercel.app/');
-        setGameUrl('.game-card[data-game="roubleh"]', 'https://robla.vercel.app/');
-        setGameUrl('.game-card[data-game="squares"]', 'https://morabaa.vercel.app/');
-        setGameUrl('.game-card[data-game="colored-dice"]', 'https://tchaktchaykalmlawana.vercel.app/');
-        setGameUrl('.game-card[data-game="buzzur-win"]', 'https://buzzur-sand.vercel.app/');
-        
-        // الرابط الجديد للعبة "فاميلتنا"
-        setGameUrl('.game-card[data-game="familtyna"]', 'https://jawabak-flame.vercel.app/');
-        
-        // دالة الانتقال للرابط مع معالجة آمنة
-        function redirectToGame(url, gameName) {
-            if (!url) {
-                console.warn(`⚠️ الرابط غير متاح للعبة: ${gameName}`);
-                alert(`عذراً، رابط لعبة "${gameName}" غير متوفر حالياً.`);
-                return;
-            }
-            
-            let finalUrl = url;
-            // التأكد من وجود البروتوكول (https) بشكل صحيح
-            if (!finalUrl.startsWith('http://') && !finalUrl.startsWith('https://')) {
-                finalUrl = 'https://' + finalUrl;
-            }
-            
-            // فتح الرابط في نفس الصفحة (تجربة سلسة)
-            window.location.href = finalUrl;
-        }
-        
-        // إضافة حدث النقر لكل بطاقة (بما فيها البطاقة الجديدة)
-        cards.forEach(card => {
-            card.style.cursor = 'pointer';
-            const url = card.getAttribute('data-url');
-            const titleElement = card.querySelector('.game-title');
-            const gameTitle = titleElement ? titleElement.innerText : 'اللعبة';
-            
-            card.addEventListener('click', (e) => {
-                e.stopPropagation();
-                let currentUrl = card.getAttribute('data-url');
-                if (currentUrl) {
-                    redirectToGame(currentUrl, gameTitle);
-                } else {
-                    alert(`⚠️ لم يتم تعيين رابط لعبة "${gameTitle}"، يرجى المحاولة لاحقاً.`);
-                }
+            const gameCards = document.querySelectorAll('.game-card');
+            gameCards.forEach(card => {
+                const gameTitle = card.querySelector('.game-title')?.innerText || 'اللعبة';
+                card.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const gameUrl = card.getAttribute('data-url');
+                    if (gameUrl) navigateToGame(gameUrl, gameTitle);
+                });
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'button');
+                card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); } });
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left, y = e.clientY - rect.top;
+                    const centerX = rect.width / 2, centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 25, rotateY = (centerX - x) / 25;
+                    card.style.transform = `translateY(-12px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                });
+                card.addEventListener('mouseleave', () => { card.style.transform = ''; });
             });
             
-            // دعم إمكانية الوصول (keyboard)
-            card.setAttribute('tabindex', '0');
-            card.setAttribute('role', 'button');
-            card.setAttribute('aria-label', `انتقال إلى لعبة ${gameTitle}`);
+            // ========== هنا ضع مسارات صورك المحلية ==========
+            // استبدل المسار التالي بمسار مجلد الصور الخاص بك
+            // مثال: 'C:/Users/lok/Desktop/Nouveau dossier (3)/img-buzzur-win.png'
             
-            card.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    card.click();
+            const imageFolder = 'C:/Users/lok/Desktop/Nouveau dossier (3)/';  // <--- غير هذا المسار إلى مجلد الصور الخاص بك
+            
+            // أسماء ملفات الصور (ضع اسم الملف مع امتداده png, jpg, gif...)
+            const gameImages = {
+                'img-find-number': imageFolder + 'find-number.png',      // غير اسم الملف
+                'img-ask-win': imageFolder + 'ask-win.png',              // غير اسم الملف
+                'img-color-guess': imageFolder + 'color-guess.png',      // غير اسم الملف
+                'img-roubleh': imageFolder + 'roubleh.png',              // غير اسم الملف
+                'img-squares': imageFolder + 'squares.png',              // غير اسم الملف
+                'img-colored-dice': imageFolder + 'colored-dice.png',    // غير اسم الملف
+                'img-buzzur-win': imageFolder + 'buzzur-win.png',        // غير اسم الملف
+                'img-familtyna': imageFolder + 'familtyna.png'           // غير اسم الملف
+            };
+            
+            // تطبيق الصور - لا تغير هذا الكود
+            for (let [id, src] of Object.entries(gameImages)) {
+                const imgElement = document.getElementById(id);
+                if (imgElement && src) {
+                    imgElement.src = src;
+                    console.log('تم تحميل الصورة لـ: ' + id + ' من: ' + src);
                 }
-            });
-        });
-        
-        // تحسين خاص: إعادة رسم أيقونة لعبة "النرد الملون" بأسلوب فني أكثر
-        const coloredDiceCard = document.querySelector('.game-card[data-game="colored-dice"] .card-icon');
-        if (coloredDiceCard) {
-            coloredDiceCard.style.background = "linear-gradient(135deg, #ff9a3c, #d32f2f, #fbc02d)";
-            coloredDiceCard.style.backgroundSize = "200% 200%";
-            coloredDiceCard.style.transition = "all 0.5s ease";
-            coloredDiceCard.style.boxShadow = "0 0 12px rgba(255,165,0,0.6)";
-            setInterval(() => {
-                if (coloredDiceCard) {
-                    let hue = (Date.now() / 50) % 360;
-                    coloredDiceCard.style.background = `linear-gradient(125deg, hsl(${hue}, 80%, 60%), hsl(${hue + 40}, 85%, 55%))`;
-                }
-            }, 800);
-            coloredDiceCard.innerHTML = "🎲🌈";
-            coloredDiceCard.style.fontSize = "3.4rem";
-            coloredDiceCard.style.textShadow = "2px 2px 0px rgba(0,0,0,0.3)";
-        }
-        
-        // تطبيق تأثير فني لأيقونة لعبة عبز تربح
-        const buzzurIcon = document.querySelector('.game-card[data-game="buzzur-win"] .card-icon');
-        if (buzzurIcon) {
-            buzzurIcon.style.background = "radial-gradient(circle at 30% 20%, #f5af19, #f12711)";
-            buzzurIcon.style.border = "2px solid rgba(255,215,0,0.7)";
-            buzzurIcon.style.boxShadow = "0 0 18px rgba(255,100,0,0.5)";
-            buzzurIcon.innerHTML = "🎨✏️";
-            buzzurIcon.style.fontSize = "3.2rem";
-            const parentCard = buzzurIcon.closest('.game-card');
-            if (parentCard) {
-                parentCard.addEventListener('mouseenter', () => {
-                    buzzurIcon.style.transform = "scale(1.12) rotate(2deg)";
-                    buzzurIcon.style.filter = "drop-shadow(0 0 8px gold)";
-                });
-                parentCard.addEventListener('mouseleave', () => {
-                    buzzurIcon.style.transform = "scale(1)";
-                    buzzurIcon.style.filter = "drop-shadow(0 0 2px orange)";
-                });
             }
-        }
-        
-        // تخصيص أيقونة لعبة "فاميلتنا" الجديدة
-        const familtynaIcon = document.querySelector('.game-card[data-game="familtyna"] .card-icon');
-        if (familtynaIcon) {
-            familtynaIcon.style.background = "linear-gradient(135deg, #f43f5e, #ec4899, #f97316)";
-            familtynaIcon.style.boxShadow = "0 0 15px rgba(244, 63, 94, 0.6)";
-            familtynaIcon.innerHTML = "👨‍👩‍👧‍👦💕";
-            familtynaIcon.style.fontSize = "3rem";
-            const famParent = familtynaIcon.closest('.game-card');
-            if (famParent) {
-                famParent.addEventListener('mouseenter', () => {
-                    familtynaIcon.style.transform = "scale(1.1)";
-                    familtynaIcon.style.filter = "drop-shadow(0 0 10px #f43f5e)";
-                });
-                famParent.addEventListener('mouseleave', () => {
-                    familtynaIcon.style.transform = "scale(1)";
-                });
-            }
-        }
-        
-        // تحسين وصف لعبة فاميلتنا
-        const famDesc = document.querySelector('.game-card[data-game="familtyna"] .game-desc');
-        if (famDesc) {
-            famDesc.innerHTML = "👪 لعبة عائلية ممتعة | أسئلة وتحديات متنوعة للصغار والكبار | اجتمعوا مع عائلتنا واستمتعوا!";
-        }
-        
-        console.log('✅ تم تحميل واجهة الألعاب بنجاح مع جميع الروابط المحدثة + لعبة النرد الملون (أيقونة مطورة) + لعبة عبز تربح + لعبة فاميلتنا الجديدة');
-        console.log('📌 رابط اللعبة الجديدة (فاميلتنا):', document.querySelector('[data-game="familtyna"]')?.getAttribute('data-url'));
-    })();
-</script>
+        })();
+    </script>
 </body>
 </html>
