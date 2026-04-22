@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>🎮 بوابة الألعاب الرقمية | Digital Games Portal</title>
+    <title>🎮 بوابة الألعاب الرقمية | الداما الملكية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -221,7 +221,7 @@
             transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
         }
 
-        /* ========== أيقونات متحركة لكل الألعاب ========== */
+        /* أيقونات متحركة لكل الألعاب */
         .card-icon {
             width: 110px;
             height: 110px;
@@ -240,7 +240,6 @@
             overflow: hidden;
         }
 
-        /* تأثير البريق العلوي */
         .card-icon::before {
             content: '';
             position: absolute;
@@ -253,7 +252,6 @@
             pointer-events: none;
         }
 
-        /* الظل المتوهج */
         .card-icon::after {
             content: '';
             position: absolute;
@@ -273,7 +271,6 @@
             box-shadow: 0 25px 45px var(--glow-color, rgba(139, 92, 246, 0.7)), inset 0 2px 4px rgba(255, 255, 255, 0.3);
         }
 
-        /* حركة مستمرة لجميع الأيقونات */
         .card-icon .animated-icon {
             display: inline-block;
             animation: iconFloat 2s ease-in-out infinite;
@@ -284,31 +281,17 @@
             50% { transform: translateY(-8px) rotate(5deg); }
         }
 
-        /* حركة خاصة لكل لعبة حسب هويتها */
-        .game-card[data-game="find-number"] .card-icon .animated-icon {
-            animation: bounceRotate 1.8s ease infinite;
-        }
-        .game-card[data-game="ask-win"] .card-icon .animated-icon {
-            animation: shake 2s ease infinite;
-        }
-        .game-card[data-game="color-guess"] .card-icon .animated-icon {
-            animation: colorWave 2s ease infinite;
-        }
-        .game-card[data-game="roubleh"] .card-icon .animated-icon {
-            animation: spinSlow 3s linear infinite;
-        }
-        .game-card[data-game="squares"] .card-icon .animated-icon {
-            animation: squarePop 1.5s ease infinite;
-        }
-        .game-card[data-game="colored-dice"] .card-icon .animated-icon {
-            animation: diceRollAnim 1s ease infinite;
-        }
-        .game-card[data-game="buzzur-win"] .card-icon .animated-icon {
-            animation: bearDance 1.6s ease-in-out infinite;
-        }
-        .game-card[data-game="familtyna"] .card-icon .animated-icon {
-            animation: heartBeatAnim 1.4s ease infinite;
-        }
+        /* حركات خاصة حسب اللعبة */
+        .game-card[data-game="find-number"] .card-icon .animated-icon { animation: bounceRotate 1.8s ease infinite; }
+        .game-card[data-game="ask-win"] .card-icon .animated-icon { animation: shake 2s ease infinite; }
+        .game-card[data-game="color-guess"] .card-icon .animated-icon { animation: colorWave 2s ease infinite; }
+        .game-card[data-game="roubleh"] .card-icon .animated-icon { animation: spinSlow 3s linear infinite; }
+        .game-card[data-game="squares"] .card-icon .animated-icon { animation: squarePop 1.5s ease infinite; }
+        .game-card[data-game="colored-dice"] .card-icon .animated-icon { animation: diceRollAnim 1s ease infinite; }
+        .game-card[data-game="buzzur-win"] .card-icon .animated-icon { animation: bearDance 1.6s ease-in-out infinite; }
+        .game-card[data-game="familtyna"] .card-icon .animated-icon { animation: heartBeatAnim 1.4s ease infinite; }
+        /* لعبة الداما الملكية بتأثير مميز وملكي */
+        .game-card[data-game="royal-dama"] .card-icon .animated-icon { animation: crownSpin 2s ease infinite; }
 
         @keyframes bounceRotate {
             0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -348,8 +331,13 @@
             30% { transform: scale(1.2); }
             60% { transform: scale(1.1); }
         }
+        @keyframes crownSpin {
+            0% { transform: rotateY(0deg) scale(1); }
+            50% { transform: rotateY(180deg) scale(1.2); text-shadow: 0 0 12px gold; }
+            100% { transform: rotateY(360deg) scale(1); }
+        }
 
-        /* تخصيص لعبة بوزي متخافش (عبز تربح سابقاً) بشكل جديد كلياً */
+        /* تخصيص بوزي متخافش */
         .game-card[data-game="buzzur-win"] {
             --accent-color: #ff7e5e;
             --secondary-color: #feb47b;
@@ -373,7 +361,30 @@
             text-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
         }
 
-        /* باقي الألوان */
+        /* الداما الملكية - تصميم فاخر */
+        .game-card[data-game="royal-dama"] {
+            --accent-color: #fbbf24;
+            --secondary-color: #d97706;
+            --glow-color: rgba(251, 191, 36, 0.7);
+        }
+        .game-card[data-game="royal-dama"] .card-icon {
+            background: linear-gradient(135deg, #eab308, #b45309, #f59e0b);
+            box-shadow: 0 20px 35px rgba(234, 179, 8, 0.6), inset 0 2px 4px rgba(255, 255, 200, 0.4);
+        }
+        .game-card[data-game="royal-dama"] .game-title {
+            background: linear-gradient(120deg, #FFE484, #F5B042, #F5A623);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 8px rgba(245, 166, 35, 0.5);
+            letter-spacing: 0.5px;
+        }
+        .game-card[data-game="royal-dama"] .play-btn {
+            background: linear-gradient(135deg, #fbbf24, #d97706);
+            box-shadow: 0 6px 18px rgba(251, 191, 36, 0.5), 0 8px 0 #b45309;
+        }
+
+        /* ألوان باقي الألعاب */
         .game-card[data-game="find-number"] { --accent-color: #3b82f6; --secondary-color: #1d4ed8; --glow-color: rgba(59, 130, 246, 0.5); }
         .game-card[data-game="ask-win"] { --accent-color: #10b981; --secondary-color: #059669; --glow-color: rgba(16, 185, 129, 0.5); }
         .game-card[data-game="color-guess"] { --accent-color: #f97316; --secondary-color: #ea580c; --glow-color: rgba(249, 115, 22, 0.5); }
@@ -381,12 +392,8 @@
         .game-card[data-game="squares"] { --accent-color: #14b8a6; --secondary-color: #0d9488; --glow-color: rgba(20, 184, 166, 0.6); }
         .game-card[data-game="colored-dice"] { --accent-color: #f59e0b; --secondary-color: #d97706; --glow-color: rgba(245, 158, 11, 0.6); }
         .game-card[data-game="familtyna"] { --accent-color: #f43f5e; --secondary-color: #e11d48; --glow-color: rgba(244, 63, 94, 0.5); }
-
-        /* لعبة المربعات بتأثير إضافي */
-        .game-card[data-game="squares"] .card-icon {
-            background: linear-gradient(135deg, #0f766e, #115e59);
-            position: relative;
-        }
+        
+        /* تأثير إضافي للمربعات */
         .game-card[data-game="squares"] .card-icon::after {
             content: '⬜⬛';
             position: absolute;
@@ -403,7 +410,6 @@
             100% { transform: rotate(0deg) translate(0, 0); opacity: 0.3; }
         }
 
-        /* النرد الملون بتأثير مميز */
         .game-card[data-game="colored-dice"] .card-icon {
             background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
             background-size: 200% 200%;
@@ -415,7 +421,6 @@
             100% { background-position: 0% 0%; }
         }
 
-        /* زر التشغيل */
         .play-btn {
             display: inline-flex;
             align-items: center;
@@ -485,6 +490,7 @@
         .game-card:nth-child(6) { animation-delay: 0.40s; }
         .game-card:nth-child(7) { animation-delay: 0.47s; }
         .game-card:nth-child(8) { animation-delay: 0.54s; }
+        .game-card:nth-child(9) { animation-delay: 0.61s; }
 
         .loading-overlay {
             position: fixed;
@@ -531,12 +537,12 @@
     </div>
     <div class="container">
         <div class="hero">
-            <div class="hero-badge"><span>🎮✨</span><span>ثماني ألعاب مذهلة بأيقونات متحركة</span></div>
+            <div class="hero-badge"><span>🎮✨</span><span>تسع ألعاب مذهلة بأيقونات متحركة</span></div>
             <h1>بوابتك إلى عالم الألعاب الرقمية</h1>
-            <p>اختر اللعبة التي تفضلها وانطلق في رحلة مثيرة | أيقونات نابضة بالحياة وتأثيرات ثلاثية الأبعاد ساحرة</p>
+            <p>اختر اللعبة التي تفضلها وانطلق في رحلة مثيرة | أيقونات نابضة بالحياة وتأثيرات ثلاثية الأبعاد ساحرة + الداما الملكية</p>
         </div>
         <div class="games-grid">
-            <!-- لعبة إيجاد الرقم -->
+            <!-- إيجاد الرقم -->
             <div class="game-card" data-game="find-number" data-url="https://numgams.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon"><span class="animated-icon">🎲</span></div>
@@ -590,7 +596,7 @@
                     <div class="play-btn"><span>🌈</span><span>ابدأ اللعبة</span></div>
                 </div>
             </div>
-            <!-- بوزي متخافش - تم تغيير الشكل بالكامل -->
+            <!-- بوزي متخافش -->
             <div class="game-card" data-game="buzzur-win" data-url="https://buzzur-sand.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon"><span class="animated-icon">🐻‍❄️✨🎈</span></div>
@@ -608,9 +614,18 @@
                     <div class="play-btn"><span>👪</span><span>ابدأ اللعبة</span></div>
                 </div>
             </div>
+            <!-- الداما الملكية - اللعبة الجديدة المطلوبة -->
+            <div class="game-card" data-game="royal-dama" data-url="https://damma-sigma.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon"><span class="animated-icon">👑♟️🏆</span></div>
+                    <div class="game-title">الداما الملكية</div>
+                    <div class="game-desc">♟️ لعبة الدمى الكلاسيكية بمظهر ملكي فاخر | تحرك بحكمة وتوج ملكاً على رقعة الذكاء الإستراتيجي</div>
+                    <div class="play-btn"><span>👑</span><span>خوض المعركة الملكية</span></div>
+                </div>
+            </div>
         </div>
         <div class="footer">
-            <p>⚡ اضغط على أي بطاقة للدخول مباشرة إلى اللعبة | أيقونات متحركة وتصميم ثلاثي الأبعاد نابض بالحياة 🚀</p>
+            <p>⚡ اضغط على أي بطاقة للدخول مباشرة إلى اللعبة | أيقونات متحركة وتصميم ثلاثي الأبعاد نابض بالحياة 🚀 | الداما الملكية – أبدع في التخطيط واستمتع باللعب!</p>
         </div>
     </div>
     <script>
@@ -643,7 +658,7 @@
                 });
                 card.addEventListener('mouseleave', () => { card.style.transform = ''; });
             });
-            console.log('✨ تم تحميل البوابة بنجاح | جميع الأيقونات متحركة ولعبة بوزي متخافش بتصميم جديد كلياً!');
+            console.log('✨ تم تحميل البوابة بنجاح | جميع الأيقونات متحركة وأُضيفت لعبة "الداما الملكية" والتي توجه إلى damma-sigma.vercel.app');
         })();
     </script>
 </body>
