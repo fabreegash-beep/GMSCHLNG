@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>🎮 بوابة الألعاب الرقمية | الداما الملكية</title>
+    <title>🎮 بوابة الألعاب الرقمية | الداما الملكية + خمن الوقت + الجاسوس</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -290,8 +290,10 @@
         .game-card[data-game="colored-dice"] .card-icon .animated-icon { animation: diceRollAnim 1s ease infinite; }
         .game-card[data-game="buzzur-win"] .card-icon .animated-icon { animation: bearDance 1.6s ease-in-out infinite; }
         .game-card[data-game="familtyna"] .card-icon .animated-icon { animation: heartBeatAnim 1.4s ease infinite; }
-        /* لعبة الداما الملكية بتأثير مميز وملكي */
         .game-card[data-game="royal-dama"] .card-icon .animated-icon { animation: crownSpin 2s ease infinite; }
+        /* الألعاب الجديدة */
+        .game-card[data-game="guess-time"] .card-icon .animated-icon { animation: timeTick 1.8s ease-in-out infinite; }
+        .game-card[data-game="spy-game"] .card-icon .animated-icon { animation: spyGlow 1.6s ease infinite; }
 
         @keyframes bounceRotate {
             0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -335,6 +337,17 @@
             0% { transform: rotateY(0deg) scale(1); }
             50% { transform: rotateY(180deg) scale(1.2); text-shadow: 0 0 12px gold; }
             100% { transform: rotateY(360deg) scale(1); }
+        }
+        @keyframes timeTick {
+            0% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+            25% { transform: scale(1.15) rotate(5deg); text-shadow: 0 0 6px cyan; }
+            75% { transform: scale(1) rotate(-5deg); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+        @keyframes spyGlow {
+            0% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 0px #1e3a8a); }
+            50% { transform: translateY(-5px) scale(1.1); filter: drop-shadow(0 0 8px #3b82f6); }
+            100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 0px #1e3a8a); }
         }
 
         /* تخصيص بوزي متخافش */
@@ -382,6 +395,44 @@
         .game-card[data-game="royal-dama"] .play-btn {
             background: linear-gradient(135deg, #fbbf24, #d97706);
             box-shadow: 0 6px 18px rgba(251, 191, 36, 0.5), 0 8px 0 #b45309;
+        }
+
+        /* لعبة خمن الوقت */
+        .game-card[data-game="guess-time"] {
+            --accent-color: #06b6d4;
+            --secondary-color: #0891b2;
+            --glow-color: rgba(6, 182, 212, 0.6);
+        }
+        .game-card[data-game="guess-time"] .card-icon {
+            background: linear-gradient(135deg, #22d3ee, #0891b2);
+        }
+        .game-card[data-game="guess-time"] .game-title {
+            background: linear-gradient(120deg, #a5f3fc, #67e8f9, #06b6d4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* لعبة الجاسوس */
+        .game-card[data-game="spy-game"] {
+            --accent-color: #2563eb;
+            --secondary-color: #1e3a8a;
+            --glow-color: rgba(37, 99, 235, 0.7);
+        }
+        .game-card[data-game="spy-game"] .card-icon {
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            box-shadow: 0 20px 35px rgba(59,130,246,0.6);
+        }
+        .game-card[data-game="spy-game"] .game-title {
+            background: linear-gradient(120deg, #bfdbfe, #60a5fa, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+        }
+        .game-card[data-game="spy-game"] .play-btn {
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            box-shadow: 0 6px 18px rgba(59,130,246,0.5), 0 8px 0 #1e3a8a;
         }
 
         /* ألوان باقي الألعاب */
@@ -483,14 +534,16 @@
             opacity: 0;
         }
         .game-card:nth-child(1) { animation-delay: 0.05s; }
-        .game-card:nth-child(2) { animation-delay: 0.12s; }
-        .game-card:nth-child(3) { animation-delay: 0.19s; }
-        .game-card:nth-child(4) { animation-delay: 0.26s; }
-        .game-card:nth-child(5) { animation-delay: 0.33s; }
-        .game-card:nth-child(6) { animation-delay: 0.40s; }
-        .game-card:nth-child(7) { animation-delay: 0.47s; }
-        .game-card:nth-child(8) { animation-delay: 0.54s; }
-        .game-card:nth-child(9) { animation-delay: 0.61s; }
+        .game-card:nth-child(2) { animation-delay: 0.1s; }
+        .game-card:nth-child(3) { animation-delay: 0.15s; }
+        .game-card:nth-child(4) { animation-delay: 0.2s; }
+        .game-card:nth-child(5) { animation-delay: 0.25s; }
+        .game-card:nth-child(6) { animation-delay: 0.3s; }
+        .game-card:nth-child(7) { animation-delay: 0.35s; }
+        .game-card:nth-child(8) { animation-delay: 0.4s; }
+        .game-card:nth-child(9) { animation-delay: 0.45s; }
+        .game-card:nth-child(10) { animation-delay: 0.5s; }
+        .game-card:nth-child(11) { animation-delay: 0.55s; }
 
         .loading-overlay {
             position: fixed;
@@ -537,9 +590,9 @@
     </div>
     <div class="container">
         <div class="hero">
-            <div class="hero-badge"><span>🎮✨</span><span>تسع ألعاب مذهلة بأيقونات متحركة</span></div>
+            <div class="hero-badge"><span>🎮✨</span><span>إحدى عشرة لعبة مذهلة بأيقونات متحركة</span></div>
             <h1>بوابتك إلى عالم الألعاب الرقمية</h1>
-            <p>اختر اللعبة التي تفضلها وانطلق في رحلة مثيرة | أيقونات نابضة بالحياة وتأثيرات ثلاثية الأبعاد ساحرة + الداما الملكية</p>
+            <p>اختر اللعبة التي تفضلها وانطلق في رحلة مثيرة | أيقونات نابضة بالحياة وتأثيرات ثلاثية الأبعاد ساحرة + الداما الملكية + خمن الوقت + الجاسوس</p>
         </div>
         <div class="games-grid">
             <!-- إيجاد الرقم -->
@@ -614,7 +667,7 @@
                     <div class="play-btn"><span>👪</span><span>ابدأ اللعبة</span></div>
                 </div>
             </div>
-            <!-- الداما الملكية - اللعبة الجديدة المطلوبة -->
+            <!-- الداما الملكية -->
             <div class="game-card" data-game="royal-dama" data-url="https://damma-sigma.vercel.app/">
                 <div class="card-inner">
                     <div class="card-icon"><span class="animated-icon">👑♟️🏆</span></div>
@@ -623,9 +676,27 @@
                     <div class="play-btn"><span>👑</span><span>خوض المعركة الملكية</span></div>
                 </div>
             </div>
+            <!-- خمن الوقت (جديدة) -->
+            <div class="game-card" data-game="guess-time" data-url="https://crono-blush.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon"><span class="animated-icon">⏱️⌛🕒</span></div>
+                    <div class="game-title">خمن الوقت</div>
+                    <div class="game-desc">🕰️ تحدى سرعتك وتركيزك | خمن الوقت الصحيح قبل نفاد الساعة | لعبة حماسية وممتعة</div>
+                    <div class="play-btn"><span>⏳</span><span>خمن الآن</span></div>
+                </div>
+            </div>
+            <!-- الجاسوس (جديدة) -->
+            <div class="game-card" data-game="spy-game" data-url="https://jasos.vercel.app/">
+                <div class="card-inner">
+                    <div class="card-icon"><span class="animated-icon">🕵️‍♂️🔎🗝️</span></div>
+                    <div class="game-title">الجاسوس</div>
+                    <div class="game-desc">🕵️ مهمة سرية | حل الألغاز واكتشاف الخائن وسط جو من الغموض والإثارة والتحدي</div>
+                    <div class="play-btn"><span>🔍</span><span>ابدأ المهمة</span></div>
+                </div>
+            </div>
         </div>
         <div class="footer">
-            <p>⚡ اضغط على أي بطاقة للدخول مباشرة إلى اللعبة | أيقونات متحركة وتصميم ثلاثي الأبعاد نابض بالحياة 🚀 | الداما الملكية – أبدع في التخطيط واستمتع باللعب!</p>
+            <p>⚡ اضغط على أي بطاقة للدخول مباشرة إلى اللعبة | أيقونات متحركة وتصميم ثلاثي الأبعاد نابض بالحياة 🚀 | الداما الملكية – خمن الوقت – الجاسوس: أضفنا ألعاباً جديدة لمرح لا ينتهي!</p>
         </div>
     </div>
     <script>
@@ -658,7 +729,7 @@
                 });
                 card.addEventListener('mouseleave', () => { card.style.transform = ''; });
             });
-            console.log('✨ تم تحميل البوابة بنجاح | جميع الأيقونات متحركة وأُضيفت لعبة "الداما الملكية" والتي توجه إلى damma-sigma.vercel.app');
+            console.log('✨ تم تحميل البوابة بنجاح | جميع الأيقونات متحركة وأُضيفت لعبتان جديدتان: "خمن الوقت" و "الجاسوس" مع احتفاظ كامل بالكود السابق');
         })();
     </script>
 </body>
